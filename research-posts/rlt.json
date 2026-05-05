@@ -1,0 +1,19 @@
+﻿{
+    "slug":  "rlt",
+    "title":  "Precise Manipulation with Efficient Online RL",
+    "isoDate":  "2026-03-19",
+    "dateLabel":  "Mar 19, 2026",
+    "paperLabel":  "Efficient Online RL for Precision Tasks",
+    "paperUrl":  "https://example.com/arm-rlt",
+    "emailLabel":  "arm-lab@example.com",
+    "emailUrl":  "mailto:arm-lab@example.com",
+    "videoUrl":  "research-posts/video/rlt.mp4",
+    "summary":  "We extract an RL token from VLA models to enable fast online RL and improve throughput on precise tasks with only a few hours of data.",
+    "body":  [
+                 "This work studies how to adapt large policies with constrained online interaction budgets.",
+                 "By exposing a compact RL token interface, we significantly reduce optimization instability during on-robot finetuning.",
+                 "The approach reaches high-precision assembly behavior with small amounts of additional data."
+             ],
+    "figureUrl":  "research-posts/figure/rlt.png",
+    "figureAlt":  "Precise Manipulation with Efficient Online RL figure"
+}

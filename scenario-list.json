@@ -1,0 +1,8 @@
+{
+  "collection": "scenario",
+  "posts": [
+    { "slug": "warehouse-picking", "path": "scenario-posts/warehouse-picking.json" },
+    { "slug": "household-assist", "path": "scenario-posts/household-assist.json" },
+    { "slug": "lab-inspection", "path": "scenario-posts/lab-inspection.json" }
+  ]
+}

@@ -1,0 +1,19 @@
+﻿{
+    "slug":  "pi05",
+    "title":  "ARM-0.5: A VLA with Open-World Generalization",
+    "isoDate":  "2025-04-22",
+    "dateLabel":  "Apr 22, 2025",
+    "paperLabel":  "ARM-0.5 Open-World Generalization",
+    "paperUrl":  "https://example.com/arm-pi05",
+    "emailLabel":  "arm-lab@example.com",
+    "emailUrl":  "mailto:arm-lab@example.com",
+    "videoUrl":  "research-posts/video/pi05.mp4",
+    "summary":  "Our generalist policy extends across unseen homes and workspaces, enabling robots to transfer to novel tasks with minimal adaptation.",
+    "body":  [
+                 "ARM-0.5 expands generalization to new layouts, tools, and visual conditions without task-specific retraining.",
+                 "The training recipe balances multi-robot diversity with targeted robustness augmentation.",
+                 "In cross-environment transfer tests, the model sustains high success rates on unseen task compositions."
+             ],
+    "figureUrl":  "research-posts/figure/pi05.png",
+    "figureAlt":  "ARM-0.5: A VLA with Open-World Generalization figure"
+}

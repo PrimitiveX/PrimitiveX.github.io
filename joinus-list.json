@@ -1,0 +1,104 @@
+{
+  "roles": [
+    {
+      "id": "vla-engineer",
+      "title": "VLA Engineer (Full-time)",
+      "zhTitle": "VLA 工程师（全职）",
+      "qualifications": [
+        "MS/PhD or equivalent experience in robotics, computer science, or related fields.",
+        "Strong foundation in Python and deep learning frameworks such as PyTorch.",
+        "Hands-on experience building or fine-tuning vision-language-action models."
+      ],
+      "zhQualifications": [
+        "机器人、计算机或相关方向硕士/博士，或具备同等实践经验。",
+        "具备扎实的 Python 与深度学习框架（如 PyTorch）基础。",
+        "有视觉-语言-动作（VLA）模型搭建或微调的实操经验。"
+      ],
+      "duties": [
+        "Build and optimize end-to-end VLA training pipelines for manipulation and mobile manipulation tasks.",
+        "Collaborate with data and platform engineers to scale embodied datasets and evaluation benchmarks.",
+        "Deliver robust, production-oriented policies with measurable performance improvements."
+      ],
+      "zhDuties": [
+        "面向操作与移动操作任务，搭建并优化端到端 VLA 训练流水线。",
+        "与数据及平台工程团队协作，扩展具身数据集与评测基准。",
+        "交付稳健、可落地的策略模型，并实现可量化性能提升。"
+      ]
+    },
+    {
+      "id": "slam-engineer",
+      "title": "SLAM Engineer (Full-time)",
+      "zhTitle": "SLAM 工程师（全职）",
+      "qualifications": [
+        "Strong C++ engineering skills and practical ROS2 experience.",
+        "Experience with multi-sensor fusion for localization and mapping.",
+        "Ability to debug SLAM in real, noisy industrial environments."
+      ],
+      "zhQualifications": [
+        "具备扎实的 C++ 工程能力和实际 ROS2 开发经验。",
+        "有多传感器融合定位与建图经验。",
+        "能够在真实、噪声复杂的工业环境中调试 SLAM 系统。"
+      ],
+      "duties": [
+        "Develop robust localization and mapping modules for cluttered, dynamic indoor environments.",
+        "Improve sensor fusion quality across LiDAR, camera, and IMU in production robot systems.",
+        "Collaborate with autonomy and platform teams for deployment and validation."
+      ],
+      "zhDuties": [
+        "为复杂、动态的室内环境开发稳健的定位与建图模块。",
+        "提升量产机器人系统中 LiDAR、相机与 IMU 的融合质量。",
+        "与自主系统及平台团队协作完成部署与验证。"
+      ]
+    },
+    {
+      "id": "motion-planning-engineer",
+      "title": "Motion Planning Engineer (Full-time)",
+      "zhTitle": "运动规划工程师（全职）",
+      "qualifications": [
+        "Strong background in optimization, trajectory generation, and robotic control interfaces.",
+        "Hands-on experience with planning frameworks and kinematics libraries.",
+        "Ability to evaluate trade-offs among safety, smoothness, and runtime performance."
+      ],
+      "zhQualifications": [
+        "在优化、轨迹生成与机器人控制接口方面具备扎实基础。",
+        "有规划框架与运动学库的实战经验。",
+        "能够在安全性、平滑性与实时性能之间做工程权衡。"
+      ],
+      "duties": [
+        "Design global and local planners for mobile manipulation with safety and efficiency constraints.",
+        "Integrate planning with learned policies and runtime fail-safe behaviors.",
+        "Build tooling for planning evaluation, regression testing, and field diagnostics."
+      ],
+      "zhDuties": [
+        "面向移动操作任务设计全局与局部规划器，满足安全与效率约束。",
+        "将规划模块与学习策略、运行时故障保护机制进行集成。",
+        "构建规划评估、回归测试与现场诊断工具链。"
+      ]
+    },
+    {
+      "id": "vla-research-intern",
+      "title": "VLA Algorithm Researcher (Intern)",
+      "zhTitle": "VLA 算法研究员（实习）",
+      "qualifications": [
+        "Current MSc/PhD student in robotics, AI, machine learning, or a related discipline.",
+        "Solid coding ability and familiarity with modern ML tooling.",
+        "Strong interest in embodied intelligence and experimental research."
+      ],
+      "zhQualifications": [
+        "机器人、人工智能、机器学习或相关方向在读硕士/博士。",
+        "具备扎实编码能力，并熟悉现代机器学习工具链。",
+        "对具身智能与实验研究有强烈兴趣。"
+      ],
+      "duties": [
+        "Research representation learning, policy distillation, and long-horizon planning for embodied agents.",
+        "Prototype and validate algorithmic ideas on internal robot stacks and simulation benchmarks.",
+        "Document findings and communicate results with the research team."
+      ],
+      "zhDuties": [
+        "研究具身智能体的表征学习、策略蒸馏与长时程规划方法。",
+        "在内部机器人系统与仿真基准上完成算法原型与验证。",
+        "整理研究结论并与团队进行技术沟通与分享。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+﻿{
+    "slug":  "vla-basics",
+    "track":  "vla",
+    "title":  "VLA Tutorial: Building Your First Policy",
+    "isoDate":  "2026-04-02",
+    "dateLabel":  "Apr 2, 2026",
+    "paperLabel":  "VLA Starter Guide",
+    "paperUrl":  "https://example.com/vla-basics",
+    "emailLabel":  "arm-lab@example.com",
+    "emailUrl":  "mailto:arm-lab@example.com",
+    "videoUrl":  "tutorial-posts/video/vla-basics.mp4",
+    "summary":  "A practical walkthrough from dataset schema to action-token decoding for a minimal VLA pipeline.",
+    "body":  [
+                 "We cover data normalization, prompt templates, and low-latency decoder setup.",
+                 "The tutorial includes baseline evaluation scripts and debugging checkpoints.",
+                 "By the end, you can train and evaluate a compact policy on a small robot task set."
+             ],
+    "figureUrl":  "tutorial-posts/figure/vla-basics.png",
+    "figureAlt":  "VLA Tutorial: Building Your First Policy figure"
+}

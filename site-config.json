@@ -1,0 +1,247 @@
+{
+  "dataVersion": "20260510",
+  "assets": {
+    "homeVideoUrl": "home-posts/video/home.mp4"
+  },
+  "collections": {
+    "research": {
+      "list": "research-list.json",
+      "title": "Research"
+    },
+    "scenario": {
+      "list": "scenario-list.json",
+      "title": "Scenario"
+    },
+    "tutorial": {
+      "list": "tutorial-list.json",
+      "title": "Tutorial"
+    },
+    "joinUsList": "joinus-list.json"
+  },
+  "supabase": {
+    "enabled": true,
+    "url": "https://pqynhneowixrgpeghqrh.supabase.co",
+    "anonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBxeW5obmVvd2l4cmdwZWdocXJoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5MDE5NDksImV4cCI6MjA5MzQ3Nzk0OX0.9EOX3_gxzu-M-ih9vVI9Seeo7s3hRy7tnlZyFDF1U5M",
+    "storageBucket": "applications-resumes",
+    "emailFunctionName": "send-application-email",
+    "notifyEmails": [
+      "armresearch@163.com"
+    ]
+  },
+  "applyText": {
+    "en": {
+      "title": "Apply to ARM @ YMBot",
+      "subtitle": "Submit your profile and we will contact you shortly.",
+      "roleDetailTitle": "Position Details",
+      "qualificationsLabel": "Qualifications",
+      "dutiesLabel": "Duties",
+      "personalInfoLabel": "Personal Information",
+      "nameLabel": "Name",
+      "phoneLabel": "Mobile",
+      "emailLabel": "Email",
+      "educationBackgroundLabel": "Highest Degree Background",
+      "degreePhd": "Doctoral",
+      "degreeMaster": "Master",
+      "degreeBachelor": "Bachelor",
+      "degreeOther": "Other",
+      "startDateLabel": "Start Time",
+      "graduationDateLabel": "Graduation Time",
+      "schoolNameLabel": "School Name",
+      "paperQuestionLabel": "Have you published related papers?",
+      "paperYes": "Yes",
+      "paperNo": "No",
+      "paperTitleLabel": "Paper Title (List your single most representative work)",
+      "paperJournalLabel": "Journal (Conference) Name",
+      "projectExperienceLabel": "Project Experience",
+      "projectYes": "Yes",
+      "projectNo": "No",
+      "projectNameLabel": "Project Name (List your single most representative work)",
+      "competitionExperienceLabel": "Competition Experience",
+      "competitionYes": "Yes",
+      "competitionNo": "No",
+      "competitionNameLabel": "Competition Name and Award Level (List your single most representative work)",
+      "responsibilityLabel": "Your Responsibility (Choose one option that best represents your contribution)",
+      "responsibilityAlgorithm": "Algorithm",
+      "responsibilityCode": "Code",
+      "responsibilityHardware": "Hardware",
+      "responsibilityWriting": "Writing",
+      "ros2LevelLabel": "ROS2 Proficiency",
+      "ros2None": "No experience",
+      "ros2Understand": "Basic understanding",
+      "ros2Familiar": "Familiar",
+      "ros2Expert": "Expert",
+      "resumeLabel": "Resume Attachment",
+      "resumeHint": "PDF only, file size must be under 10MB.",
+      "resumeChooseFileLabel": "Choose File",
+      "resumeNoFileLabel": "No file chosen",
+      "submitLabel": "Submit Application",
+      "invalidPhone": "Please enter a valid mobile number.",
+      "invalidEmail": "Please enter a valid email address.",
+      "invalidPaper": "Please provide both paper title and journal name.",
+      "invalidProject": "Please provide both project name and your responsibility option.",
+      "invalidCompetition": "Please provide both competition name and your responsibility option.",
+      "invalidResumeType": "Please upload a PDF resume.",
+      "invalidResumeSize": "Resume file size must be under 10MB.",
+      "missingEndpoint": "Submission backend is not configured yet. Please set supabase.url and supabase.anonKey in site-config.json.",
+      "submitFailed": "Submission failed. Please try again later.",
+      "successPrefix": "Application received for",
+      "successSuffix": "We will get back to you soon."
+    },
+    "zh": {
+      "title": "申请加入 ARM @ YMBot",
+      "subtitle": "提交你的信息后，我们会尽快联系你。",
+      "roleDetailTitle": "岗位详情",
+      "qualificationsLabel": "任职要求",
+      "dutiesLabel": "岗位职责",
+      "personalInfoLabel": "个人资料",
+      "nameLabel": "姓名",
+      "phoneLabel": "手机",
+      "emailLabel": "邮箱",
+      "educationBackgroundLabel": "最高学历背景",
+      "degreePhd": "博士",
+      "degreeMaster": "硕士",
+      "degreeBachelor": "本科",
+      "degreeOther": "其他",
+      "startDateLabel": "起始时间",
+      "graduationDateLabel": "毕业时间",
+      "schoolNameLabel": "学校名称",
+      "paperQuestionLabel": "是否有发过相关论文",
+      "paperYes": "是",
+      "paperNo": "否",
+      "paperTitleLabel": "论文标题（列举最主要的1个代表作）",
+      "paperJournalLabel": "期刊(会议)名称",
+      "projectExperienceLabel": "项目经历",
+      "projectYes": "是",
+      "projectNo": "否",
+      "projectNameLabel": "项目名称（列举最主要的1个代表作）",
+      "competitionExperienceLabel": "竞赛经历",
+      "competitionYes": "是",
+      "competitionNo": "否",
+      "competitionNameLabel": "竞赛名称和获奖级别（列举最主要的1个代表作）",
+      "responsibilityLabel": "你的职责（选择1个最能代表你贡献的选项）",
+      "responsibilityAlgorithm": "算法",
+      "responsibilityCode": "代码",
+      "responsibilityHardware": "硬件",
+      "responsibilityWriting": "文稿工作",
+      "ros2LevelLabel": "ROS2系统熟练程度",
+      "ros2None": "没接触过",
+      "ros2Understand": "了解",
+      "ros2Familiar": "熟悉",
+      "ros2Expert": "精通",
+      "resumeLabel": "个人简历附件",
+      "resumeHint": "仅支持PDF，文件大小需小于10M。",
+      "resumeChooseFileLabel": "选择文件",
+      "resumeNoFileLabel": "未选择任何文件",
+      "submitLabel": "提交申请",
+      "invalidPhone": "请输入有效手机号。",
+      "invalidEmail": "请输入有效邮箱地址。",
+      "invalidPaper": "请完整填写论文标题和期刊名称。",
+      "invalidProject": "请完整填写项目名称和责任选项。",
+      "invalidCompetition": "请完整填写竞赛名称和责任选项。",
+      "invalidResumeType": "请上传 PDF 格式简历。",
+      "invalidResumeSize": "简历文件大小需小于 10M。",
+      "missingEndpoint": "尚未配置提交后端，请在 site-config.json 中设置 supabase.url 和 supabase.anonKey。",
+      "submitFailed": "提交失败，请稍后重试。",
+      "successPrefix": "已收到",
+      "successSuffix": "的申请，我们会尽快联系你。"
+    }
+  },
+  "uiText": {
+    "en": {
+      "nav": {
+        "home": "Home",
+        "scenario": "Scenario",
+        "research": "Research",
+        "tutorial": "Tutorial",
+        "join-us": "Join Us"
+      },
+      "logoHtml": "Agentic Robot Motion <span class=\"plain-at\">@</span> YMBot",
+      "intro": "Agentic Robot Motion is guided by the Chinese educational philosophy of “rote memorization → deep understanding → generalization by analogy.” We build productive entry-level robotic workers that generate real-world economic value through memorization-based learning; they evolve into single-domain experts through self-learning in practice, and ultimately generalize their capabilities by analogy—acting as correctors for future general-purpose agents and serving as intelligence primitives that seamlessly augment other agents and human workflows.",
+      "footer": "Agentic Robot Motion",
+      "langToggle": "简体中文",
+      "tabTitles": {
+        "home": "Home",
+        "scenario": "Scenario",
+        "research": "Research",
+        "tutorial": "Tutorial",
+        "join-us": "Join Us"
+      },
+      "labels": {
+        "date": "Date:",
+        "email": "Email:",
+        "paper": "Paper:",
+        "resource": "Resource:"
+      },
+      "tutorialTracks": {
+        "vla": "VLA",
+        "slam": "SLAM",
+        "motion-planning": "Motion Planning"
+      },
+      "emptyHint": "No {title} entries found",
+      "emptyHelp": "Add JSON files under {path} and reload.",
+      "joinUs": {
+        "title": "Join ARM @ YMBot",
+        "company": "We are an intelligent robotics manufacturing company that builds robots and develops robotic intelligence systems.",
+        "websiteLabel": "official website",
+        "websiteUrl": "http://www.ymbot.com/home",
+        "hiring": "We are hiring VLA engineers (full-time), SLAM engineers (full-time), motion planning engineers (full-time), and VLA algorithm researchers (intern) who want to build embodied intelligence systems for real-world production tasks.",
+        "contactTemplate": "Contact us ({projectLeader} or {researchHead}) if you have any questions.",
+        "projectLeaderLabel": "Project Leader Mr. Cui",
+        "projectLeaderEmail": "cuichaochen@ymbot.com",
+        "researchHeadLabel": "Research Head Dr. Yang",
+        "researchHeadEmail": "omtcyang@gmail.com",
+        "qualificationsLabel": "Qualifications",
+        "dutiesLabel": "Duties",
+        "onlineApply": "Apply Online"
+      }
+    },
+    "zh": {
+      "nav": {
+        "home": "主页",
+        "scenario": "场景",
+        "research": "研究",
+        "tutorial": "教程",
+        "join-us": "加入我们"
+      },
+      "logoHtml": "ARM 机器人运动智能 <span class=\"plain-at\">@</span> YMBot",
+      "intro": "Agentic Robot Motion 受中国教育哲学 “死记硬背 → 深入理解 → 举一反三” 的启发。我们首先打造一批入门级机器人工作者，通过基于记忆的学习方式进入真实生产环境，在工厂与任务中创造实际经济价值；在持续的实践过程中，它们不断积累环境交互数据，从重复执行中归纳任务的深层结构与规律，由机械复现逐步走向对任务本质的理解，进化为单一领域专家；最终，对领域本质的掌握使其具备举一反三的能力——即使面对未见过的场景仍能自主有效应对：既可作为未来通用智能体系统的纠错者，也可作为智能基础单元，无缝嵌入其他智能体与人类工作流，实现能力增强与协同扩展。",
+      "footer": "Agentic Robot Motion",
+      "langToggle": "English",
+      "tabTitles": {
+        "home": "主页",
+        "scenario": "场景",
+        "research": "研究",
+        "tutorial": "教程",
+        "join-us": "加入我们"
+      },
+      "labels": {
+        "date": "日期:",
+        "email": "邮箱:",
+        "paper": "论文:",
+        "resource": "资源:"
+      },
+      "tutorialTracks": {
+        "vla": "VLA",
+        "slam": "SLAM",
+        "motion-planning": "运动规划"
+      },
+      "emptyHint": "未找到 {title} 条目",
+      "emptyHelp": "请在 {path} 下添加 JSON 文件后刷新。",
+      "joinUs": {
+        "title": "加入 ARM @ YMBot",
+        "company": "我们是一家智能机器人智造公司，生产机器人并研发机器人智能系统。",
+        "websiteLabel": "官网",
+        "websiteUrl": "http://www.ymbot.com/home",
+        "hiring": "我们正在招聘 VLA 工程师（全职）、SLAM 工程师（全职）、运动规划工程师（全职）以及 VLA 算法研究员（实习），共同构建面向真实生产任务的具身智能系统。",
+        "contactTemplate": "如有任何问题，请联系（{projectLeader} 或 {researchHead}）。",
+        "projectLeaderLabel": "项目负责人 Mr. Cui",
+        "projectLeaderEmail": "cuichaochen@ymbot.com",
+        "researchHeadLabel": "研究负责人 Dr. Yang",
+        "researchHeadEmail": "omtcyang@gmail.com",
+        "qualificationsLabel": "任职要求",
+        "dutiesLabel": "岗位职责",
+        "onlineApply": "在线申请"
+      }
+    }
+  }
+}

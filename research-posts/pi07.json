@@ -1,0 +1,19 @@
+﻿{
+    "slug":  "pi07",
+    "title":  "ARM-0.7: A Steerable Model with Emergent Capabilities",
+    "isoDate":  "2026-04-16",
+    "dateLabel":  "Apr 16, 2026",
+    "paperLabel":  "ARM-0.7 Technical Report",
+    "paperUrl":  "https://example.com/arm-pi07",
+    "emailLabel":  "arm-lab@example.com",
+    "emailUrl":  "mailto:arm-lab@example.com",
+    "videoUrl":  "research-posts/video/pi07.mp4",
+    "summary":  "A steerable robotic foundation model that exhibits a step-change in generalization across manipulation and navigation tasks.",
+    "body":  [
+                 "ARM-0.7 introduces steerable behavior control in a single policy while preserving open-world transfer across tasks.",
+                 "The model combines language conditioning, visual grounding, and action regularization so robots can respond to user intent with fewer demonstrations.",
+                 "Across unseen manipulation benchmarks, ARM-0.7 improves success rate and consistency while maintaining real-time inference."
+             ],
+    "figureUrl":  "research-posts/figure/pi07.png",
+    "figureAlt":  "ARM-0.7: A Steerable Model with Emergent Capabilities figure"
+}
