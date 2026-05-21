@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        const routeSections = new Set(["research", "scenario", "tutorial", "join-us", "apply"]);
+        const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+        const parts = pathname.split("/").filter(Boolean);
+
+        let routeIndex = -1;
+        for (let i = 0; i < parts.length; i += 1) {
+          if (routeSections.has(parts[i])) {
+            routeIndex = i;
+            break;
+          }
+        }
+
+        let baseParts = [];
+        let routePath = "/";
+
+        if (routeIndex >= 0) {
+          baseParts = parts.slice(0, routeIndex);
+          routePath = `/${parts.slice(routeIndex).join("/")}`;
+        } else if (pathname.endsWith("/404.html")) {
+          baseParts = parts.slice(0, -1);
+        }
+
+        const base = baseParts.length ? `/${baseParts.join("/")}` : "";
+        const target =
+          `${base || ""}/?p=${encodeURIComponent(routePath)}` +
+          (window.location.search ? `&q=${encodeURIComponent(window.location.search.slice(1))}` : "") +
+          (window.location.hash ? `&h=${encodeURIComponent(window.location.hash.slice(1))}` : "");
+
+        window.location.replace(target);
+      })();
+    </script>
+    <noscript>
+      <p>This site requires JavaScript to resolve routes. Please open the homepage.</p>
+    </noscript>
+  </body>
+</html>

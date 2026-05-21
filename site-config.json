@@ -175,7 +175,8 @@
       "tutorialTracks": {
         "vla": "VLA",
         "slam": "SLAM",
-        "motion-planning": "Motion Planning"
+        "motion-planning": "Motion Planning",
+        "writing-a-paper": "Writing a Paper"
       },
       "emptyHint": "No {title} entries found",
       "emptyHelp": "Add JSON files under {path} and reload.",
@@ -223,7 +224,8 @@
       "tutorialTracks": {
         "vla": "VLA",
         "slam": "SLAM",
-        "motion-planning": "运动规划"
+        "motion-planning": "运动规划",
+        "writing-a-paper": "论文写作"
       },
       "emptyHint": "未找到 {title} 条目",
       "emptyHelp": "请在 {path} 下添加 JSON 文件后刷新。",

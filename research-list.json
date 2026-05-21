@@ -1,11 +1,6 @@
 {
   "collection": "research",
   "posts": [
-    { "slug": "pi07", "path": "research-posts/pi07.json" },
-    { "slug": "rlt", "path": "research-posts/rlt.json" },
-    { "slug": "memory", "path": "research-posts/memory.json" },
-    { "slug": "layer", "path": "research-posts/layer.json" },
-    { "slug": "chunking", "path": "research-posts/chunking.json" },
-    { "slug": "pi05", "path": "research-posts/pi05.json" }
+    { "slug": "signeye", "path": "research-posts/signeye.json" }
   ]
 }

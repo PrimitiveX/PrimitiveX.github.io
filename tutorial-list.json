@@ -1,9 +1,6 @@
 {
   "collection": "tutorial",
   "posts": [
-    { "slug": "vla-basics", "path": "tutorial-posts/vla-basics.json" },
-    { "slug": "slam-mapping", "path": "tutorial-posts/slam-mapping.json" },
-    { "slug": "motion-planning-a-star", "path": "tutorial-posts/motion-planning-a-star.json" },
-    { "slug": "vla-finetuning", "path": "tutorial-posts/vla-finetuning.json" }
+    { "slug": "comming-soon", "path": "tutorial-posts/comming-soon.json" }
   ]
 }

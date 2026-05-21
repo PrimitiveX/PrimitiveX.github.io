@@ -448,12 +448,25 @@ async function loadCollection(name) {
   const listData = await fetchJson(listPath);
   const baseDir = listPath.slice(0, listPath.lastIndexOf("/") + 1);
 
-  const postPaths = (listData.posts || []).map((post) => {
-    if (post.path) {
-      return `${baseDir}${post.path}`;
+  const resolvePostPath = (post) => {
+    const configuredPath = String(post?.path || "").trim();
+    if (configuredPath) {
+      if (/^(?:https?:)?\/\//i.test(configuredPath) || configuredPath.startsWith("/")) {
+        return configuredPath;
+      }
+
+      // Keep project-root style paths unchanged (for example: "scenario-posts/foo.json").
+      if (configuredPath.startsWith(`${name}-posts/`)) {
+        return configuredPath;
+      }
+
+      return `${baseDir}${configuredPath}`;
     }
+
     return `${baseDir}${name}-posts/${post.slug}.json`;
-  });
+  };
+
+  const postPaths = (listData.posts || []).map((post) => resolvePostPath(post));
 
   const posts = await Promise.all(postPaths.map((path) => fetchJson(path)));
   collectionData[name] = posts
@@ -559,6 +572,54 @@ function routeFromPath(pathname) {
   }
 
   return { name: "home" };
+}
+
+function restoreRouteFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const encodedPath = params.get("p");
+  if (!encodedPath) {
+    return;
+  }
+
+  let decodedPath = encodedPath;
+  try {
+    decodedPath = decodeURIComponent(encodedPath);
+  } catch {
+    decodedPath = encodedPath;
+  }
+
+  if (!decodedPath.startsWith("/")) {
+    decodedPath = `/${decodedPath}`;
+  }
+
+  const base = basePrefix(window.location.pathname);
+  const routePath = decodedPath === "/" ? (base || "/") : `${base}${decodedPath}`;
+
+  const encodedSearch = params.get("q");
+  const encodedHash = params.get("h");
+
+  let searchPart = "";
+  let hashPart = "";
+
+  if (encodedSearch) {
+    try {
+      searchPart = decodeURIComponent(encodedSearch);
+    } catch {
+      searchPart = encodedSearch;
+    }
+    searchPart = searchPart ? `?${searchPart}` : "";
+  }
+
+  if (encodedHash) {
+    try {
+      hashPart = decodeURIComponent(encodedHash);
+    } catch {
+      hashPart = encodedHash;
+    }
+    hashPart = hashPart ? `#${hashPart}` : "";
+  }
+
+  window.history.replaceState(null, "", `${routePath}${searchPart}${hashPart}`);
 }
 
 function getItemBySlug(collection, slug) {
@@ -695,12 +756,13 @@ function renderTutorialListView() {
     return renderEmptyCollection("Tutorial", "tutorial-posts");
   }
 
-  const tracks = ["all", "vla", "slam", "motion-planning"];
+  const tracks = ["all", "vla", "slam", "motion-planning", "writing-a-paper"];
   const labels = {
     all: "All",
     vla: t("tutorialTracks.vla"),
     slam: t("tutorialTracks.slam"),
     "motion-planning": t("tutorialTracks.motion-planning"),
+    "writing-a-paper": t("tutorialTracks.writing-a-paper") || "Writing a Paper",
   };
 
   const visibleItems =
@@ -708,10 +770,26 @@ function renderTutorialListView() {
       ? allItems
       : allItems.filter((item) => {
           const track = normalizeSlug(item.track);
-          return !track || track === activeTutorialTrack;
+          return track === activeTutorialTrack;
         });
 
-  const displayItems = visibleItems.length ? visibleItems : allItems;
+  const itemsMarkup = visibleItems.length
+    ? renderTutorialListItems(visibleItems)
+    : (() => {
+        const activeLabel = String(labels[activeTutorialTrack] || "tutorial").toLowerCase();
+        const hintTitle = localizeText(t("emptyHint"), { title: activeLabel });
+        const hintHelp = localizeText(t("emptyHelp"), { path: "tutorial-posts" });
+        return `
+          <article class="timeline-item tutorial-item">
+            <div class="timeline-content">
+              <div class="timeline-head">
+                <h2>${hintTitle}</h2>
+              </div>
+              <p>${hintHelp}</p>
+            </div>
+          </article>
+        `;
+      })();
 
   const filterMarkup = tracks
     .map(
@@ -724,8 +802,147 @@ function renderTutorialListView() {
     <section class="tutorial-shell" aria-label="Tutorial list">
       <div class="tutorial-top-nav" role="tablist" aria-label="Tutorial tracks">${filterMarkup}</div>
       <section class="timeline tutorial-timeline" aria-label="Tutorial timeline">
-        ${renderTutorialListItems(displayItems)}
+        ${itemsMarkup}
       </section>
+    </section>
+  `;
+}
+
+function normalizeMediaLayout(layout, fallback = "double") {
+  const raw = String(layout || "").trim().toLowerCase();
+  if (raw === "single" || raw === "1" || raw === "single-column" || raw === "singlecolumn" || raw === "单栏") {
+    return "single";
+  }
+  if (raw === "double" || raw === "2" || raw === "double-column" || raw === "doublecolumn" || raw === "双栏") {
+    return "double";
+  }
+  return fallback;
+}
+
+function normalizeDetailVideos(item) {
+  const videos = [];
+
+  if (Array.isArray(item.videos)) {
+    for (const [index, video] of item.videos.entries()) {
+      if (typeof video === "string" && video.trim()) {
+        videos.push({
+          url: resolveDataUrl(video.trim()),
+          poster: "",
+          title: `Video ${index + 1}`,
+          caption: "",
+          layout: "double",
+        });
+        continue;
+      }
+
+      if (video && typeof video === "object" && video.url) {
+        videos.push({
+          url: resolveDataUrl(String(video.url)),
+          poster: video.poster ? resolveDataUrl(String(video.poster)) : "",
+          title: video.title ? String(video.title) : `Video ${index + 1}`,
+          caption: video.caption ? String(video.caption) : "",
+          layout: normalizeMediaLayout(video.layout),
+        });
+      }
+    }
+  }
+
+  if (!videos.length && item.videoUrl) {
+    videos.push({
+      url: resolveDataUrl(item.videoUrl),
+      poster: item.videoPoster ? resolveDataUrl(item.videoPoster) : "",
+      title: "Video",
+      caption: "",
+      layout: "single",
+    });
+  }
+
+  return videos;
+}
+
+function normalizeDetailFigures(item, title) {
+  const figures = [];
+
+  if (Array.isArray(item.figures)) {
+    for (const [index, figure] of item.figures.entries()) {
+      if (typeof figure === "string" && figure.trim()) {
+        figures.push({
+          url: resolveDataUrl(figure.trim()),
+          alt: `${title} figure ${index + 1}`,
+          caption: "",
+          layout: "double",
+        });
+        continue;
+      }
+
+      if (figure && typeof figure === "object" && figure.url) {
+        figures.push({
+          url: resolveDataUrl(String(figure.url)),
+          alt: figure.alt ? String(figure.alt) : `${title} figure ${index + 1}`,
+          caption: figure.caption ? String(figure.caption) : "",
+          layout: normalizeMediaLayout(figure.layout),
+        });
+      }
+    }
+  }
+
+  if (!figures.length && item.figureUrl) {
+    figures.push({
+      url: resolveDataUrl(item.figureUrl),
+      alt: item.figureAlt || `${title} figure`,
+      caption: item.figureCaption || "",
+      layout: "single",
+    });
+  }
+
+  return figures;
+}
+
+function renderDetailMediaGallery(item, title, options = {}) {
+  const includeFigures = options.includeFigures !== false;
+  const includeVideos = options.includeVideos !== false;
+  const videos = normalizeDetailVideos(item);
+  const figures = normalizeDetailFigures(item, title);
+
+  if ((!includeVideos || !videos.length) && (!includeFigures || !figures.length)) {
+    return "";
+  }
+
+  const videosMarkup = videos
+    .map((video) => {
+      const posterAttr = video.poster ? `poster="${video.poster}"` : "";
+      const caption = [video.title, video.caption].filter(Boolean).join(" - ");
+      return `
+        <figure class="article-media-card article-media-video article-media-layout-${video.layout}">
+          <div class="article-video-frame">
+            <video class="article-video-player" controls playsinline preload="metadata" ${posterAttr}>
+              <source src="${video.url}" type="video/mp4" />
+            </video>
+          </div>
+          ${caption ? `<figcaption>${caption}</figcaption>` : ""}
+        </figure>
+      `;
+    })
+    .join("");
+
+  const figuresMarkup = figures
+    .map(
+      (figure) => `
+        <figure class="article-media-card article-figure article-media-layout-${figure.layout}">
+          <img src="${figure.url}" alt="${figure.alt}" loading="lazy" />
+          ${figure.caption ? `<figcaption>${figure.caption}</figcaption>` : ""}
+        </figure>
+      `
+    )
+    .join("");
+
+  const videoHeading = currentLang === "zh" ? "视频" : "Videos";
+  const figureHeading = currentLang === "zh" ? "图片" : "Figures";
+
+  return `
+    <section class="article-media-gallery" aria-label="Media gallery">
+      ${includeFigures && figures.length ? `<section class="article-media-group" aria-label="Figure group"><h2 class="article-media-heading">${figureHeading}</h2><div class="article-media-grid">${figuresMarkup}</div></section>` : ""}
+      ${includeVideos && videos.length ? `<section class="article-media-group" aria-label="Video group"><h2 class="article-media-heading">${videoHeading}</h2><div class="article-media-grid">${videosMarkup}</div></section>` : ""}
     </section>
   `;
 }
@@ -740,41 +957,57 @@ function renderDetailView(item, collection) {
       ? item.resourceUrl || item.paperUrl || "#"
       : item.paperUrl || "#";
   const detailMetaMarkup =
-    collection === "scenario"
-      ? ""
-      : `<p class="article-paper"><span>${t(`labels.${detailLinkLabelKey}`) || `${detailLinkLabel}:`}</span> <a href="${detailLinkUrl}" target="_blank" rel="noopener noreferrer">${detailLinkLabel}</a></p>`;
+    detailLinkUrl && detailLinkUrl !== "#"
+      ? `<p class="article-paper"><span>${t(`labels.${detailLinkLabelKey}`) || `${detailLinkLabel}:`}</span> <a href="${detailLinkUrl}" target="_blank" rel="noopener noreferrer">${detailLinkLabel}</a></p>`
+      : "";
   const emailLabel = item.emailLabel || "arm-lab@example.com";
   const emailUrl = item.emailUrl || `mailto:${emailLabel}`;
-  const videoUrl = item.videoUrl ? resolveDataUrl(item.videoUrl) : "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
-  const figureUrl = item.figureUrl ? resolveDataUrl(item.figureUrl) : "";
-  const videoPoster = item.videoPoster ? `poster="${item.videoPoster}"` : "";
   const title = localizedItemValue(item, "title");
   const dateLabel = localizedItemValue(item, "dateLabel");
   const body = localizedItemValue(item, "body") || item.body || [];
-  const figureBlock = figureUrl
-    ? `<figure class="article-figure"><img src="${figureUrl}" alt="${item.figureAlt || `${title} figure`}" loading="lazy" /></figure>`
-    : "";
+  const isScenarioDetail = collection === "scenario";
+  const figureGalleryMarkup = isScenarioDetail
+    ? ""
+    : renderDetailMediaGallery(item, title, { includeFigures: true, includeVideos: false });
+  const videoGalleryMarkup = renderDetailMediaGallery(item, title, { includeFigures: false, includeVideos: true });
   const bodyMarkup = body.map((paragraph) => `<p>${paragraph}</p>`).join("");
+  const contentMarkup = isScenarioDetail
+    ? `${videoGalleryMarkup}<div class="article-body">${bodyMarkup}</div>`
+    : `${figureGalleryMarkup}<div class="article-body">${bodyMarkup}</div>${videoGalleryMarkup}`;
   return `
     <article class="article-view" aria-label="${localizedCollectionTitle(collection)} article">
       <h1>${title}</h1>
       <p class="article-date"><span>${t("labels.date")}</span> ${dateLabel}</p>
       <p class="article-email"><span>${t("labels.email")}</span> <a href="${emailUrl}">${emailLabel}</a></p>
       ${detailMetaMarkup}
-      <section class="article-video" aria-label="Research video">
-        <div class="article-video-frame">
-          <video class="article-video-player" controls autoplay muted loop playsinline preload="metadata" ${videoPoster}>
-            <source src="${videoUrl}" type="video/mp4" />
-          </video>
-        </div>
-      </section>
-      ${figureBlock}
-      <div class="article-body">${bodyMarkup}</div>
+      ${contentMarkup}
     </article>
   `;
 }
 
 function renderJoinUsView() {
+  const splitContactLabel = (label, fallbackRole, fallbackName) => {
+    const raw = String(label || "").trim();
+    if (!raw) {
+      return { role: fallbackRole, name: fallbackName };
+    }
+
+    if (raw.endsWith(fallbackName)) {
+      const role = raw.slice(0, raw.length - fallbackName.length).trim();
+      return { role: role || fallbackRole, name: fallbackName };
+    }
+
+    const idx = raw.lastIndexOf(" ");
+    if (idx > 0 && idx < raw.length - 1) {
+      return {
+        role: raw.slice(0, idx).trim() || fallbackRole,
+        name: raw.slice(idx + 1).trim() || fallbackName,
+      };
+    }
+
+    return { role: fallbackRole, name: raw || fallbackName };
+  };
+
   const joinText = t("joinUs");
   const isZh = currentLang === "zh";
   const companyText = String(joinText.company || "").replace(/[。.]\s*$/, "");
@@ -787,8 +1020,10 @@ function renderJoinUsView() {
   const onlineApply = joinText.onlineApply || (isZh ? "在线申请" : "Apply Online");
   const projectLeaderLabel = joinText.projectLeaderLabel || "Project Leader Mr. Cui";
   const researchHeadLabel = joinText.researchHeadLabel || "Research Head Dr. Yang";
-  const projectLeaderLink = `<a class="contact-link" href="mailto:${projectLeaderEmail}">${projectLeaderLabel}</a>`;
-  const researchHeadLink = `<a class="contact-link" href="mailto:${researchHeadEmail}">${researchHeadLabel}</a>`;
+  const projectLeaderParts = splitContactLabel(projectLeaderLabel, isZh ? "项目负责人" : "Project Leader", "Mr. Cui");
+  const researchHeadParts = splitContactLabel(researchHeadLabel, isZh ? "研究负责人" : "Research Head", "Dr. Yang");
+  const projectLeaderLink = `<span class="contact-role">${projectLeaderParts.role}</span> <a class="contact-link" href="mailto:${projectLeaderEmail}">${projectLeaderParts.name}</a>`;
+  const researchHeadLink = `<span class="contact-role">${researchHeadParts.role}</span> <a class="contact-link" href="mailto:${researchHeadEmail}">${researchHeadParts.name}</a>`;
   const contactTemplate =
     joinText.contactTemplate ||
     (isZh
@@ -1718,6 +1953,8 @@ async function startApp() {
   if (!appView) {
     return;
   }
+
+  restoreRouteFromQuery();
 
   let loadError = null;
 

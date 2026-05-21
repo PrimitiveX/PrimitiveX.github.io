@@ -1,0 +1,38 @@
+﻿{
+    "slug": "SignEye",
+    "title": "SignEye: Traffic Sign Interpretation from Vehicle First-Person View",
+    "isoDate": "2026-05-06",
+    "dateLabel": "May 6, 2026",
+    "paperLabel": "SignEye: Traffic Sign Interpretation from Vehicle First-Person View",
+    "paperUrl": "https://arxiv.org/pdf/2411.11507",
+    "emailLabel": "omtcyang@gmail.com",
+    "emailUrl": "mailto:omtcyang@gmail.com",
+    "summary": "This paper introduces a new task called Traffic Sign Interpretation from First-Person View (TSI-FPV) and proposes a Traffic Guidance Assistant (TGA) built on top of it.",
+    "body": [
+        "Traffic signs are a critical component in autonomous driving, yet most existing methods focus only on detecting and recognizing symbols, such as speed limits or prohibition signs. While these approaches can identify what a sign means, they fail to address a crucial question: which part of the road does the sign apply to? Without understanding the relationship between the vehicle’s position and the sign, the information cannot be effectively used for real driving decisions.",
+        "To address this limitation, the paper proposes a new task called Traffic Sign Interpretation from First-Person View (TSI-FPV). The key idea is to go beyond content recognition and incorporate the vehicle’s egocentric perspective, enabling the system to map traffic sign information to specific lanes and roads. To achieve this, the authors introduce Ego-centric Relative Position Definition (EgoRPD), which organizes the scene into left (L), current (C), right (R), and all (A) regions, establishing a direct connection between the vehicle and surrounding traffic elements.",
+        "The proposed framework, SignEye, adopts a stepwise reasoning pipeline that decomposes the complex task into several intuitive stages, including region detection, semantic parsing, structured description generation, and spatial alignment. Unlike traditional multi-stage pipelines that rely heavily on detection, classification, and OCR, SignEye formulates the problem as an image-to-text generation task. It produces structured natural language descriptions, making the results more interpretable and easier for downstream systems to utilize.",
+        "Building upon TSI-FPV, the authors further develop a Traffic Guidance Assistant (TGA), which translates interpreted traffic sign information into actionable driving decisions. TGA integrates three key components: structured sign descriptions, vehicle attributes (such as speed and size), and a route graph. With this information, it can perform traffic regulation assessment (e.g., detecting speeding or illegal lane usage) and provide navigation guidance (e.g., lane changes or turns).",
+        "To support training and evaluation, the paper also introduces a large-scale dataset called Traffic-CN, along with a semi-automatic data engine that generates structured annotations and decision-making samples. Experimental results demonstrate that SignEye achieves superior performance compared to existing vision-language models, particularly in tasks requiring spatial reasoning and decision-making. Overall, this work highlights the importance of integrating semantic understanding with spatial awareness for advancing autonomous driving systems."
+    ],
+    "videos": [
+        {
+            "url": "research-posts/video/signeye/direction.mp4",
+            "title": "Direction Navigation",
+            "layout": "double"
+        },
+        {
+            "url": "research-posts/video/signeye/regulation.mp4",
+            "title": "Traffic Regulation Assessment",
+            "layout": "double"
+        }
+    ],
+    "figures": [
+        {
+            "url": "research-posts/figure/signeye/main.png",
+            "alt": "Traffic guidance assistant estimates structured sign descriptions in EgoRPD with vehicle attributes and route graph for traffic regulation assessment and direction navigation.",
+            "caption": "Traffic guidance assistant for regulation assessment and direction navigation.",
+            "layout": "single"
+        }
+    ]
+}

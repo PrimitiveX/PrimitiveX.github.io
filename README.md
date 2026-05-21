@@ -4,7 +4,18 @@ A lightweight single-page application (SPA) lab website with Home, Research, Sce
 
 ## Local Preview
 
-Open `index.html` directly in your browser, or serve the folder with any static file server.
+Use the SPA-aware local server so route refresh (for example `/research` or `/tutorial/:slug`) does not 404:
+
+```bash
+python spa_server.py --port 8000
+```
+
+Then open `http://127.0.0.1:8000/`.
+
+Notes:
+
+- `python -m http.server` does not support SPA fallback and will return 404 on direct refresh of sub-routes.
+- The provided `spa_server.py` rewrites unknown route paths to `index.html` while keeping real static asset 404 behavior.
 
 ## Routing Architecture
 
@@ -30,6 +41,17 @@ Open `index.html` directly in your browser, or serve the folder with any static 
    - Choose branch `main` and folder `/ (root)`.
 4. Save and wait 1-2 minutes. Your site will be online at:
    `https://<your-user>.github.io/<your-repo>/`
+
+### Avoid 404 on Refresh (GitHub Pages)
+
+This project uses browser History API routes like `/research` and `/scenario/:slug`.
+
+- On direct refresh, GitHub Pages first looks for a physical file matching that path.
+- If the file does not exist, it serves `404.html`.
+- Our `404.html` now redirects to `/?p=<route>` and preserves search/hash.
+- `script.js` restores that route with `history.replaceState`, then renders the SPA page.
+
+For GitHub Pages deployment, make sure both `index.html` and `404.html` are published at repo root.
 
 ## Customize Quickly
 
@@ -122,7 +144,26 @@ Notes:
    - `tutorial-posts/video/`
    - `tutorial-posts/figure/`
 
-Each post JSON should point `videoUrl` and `figureUrl` to its own folder path.
+Each post JSON can use either legacy single-media fields or the new multi-media arrays:
+
+- Legacy: `videoUrl`, `figureUrl`, `figureAlt`
+- Recommended: `videos` and `figures`
+- Optional per-media layout field: `layout` (`single`/`double`, or `单栏`/`双栏`)
+
+Example:
+
+```json
+{
+   "videos": [
+      { "url": "research-posts/video/demo-1.mp4", "title": "Demo 1", "layout": "single" },
+      { "url": "research-posts/video/demo-2.mp4", "title": "Demo 2", "layout": "double" }
+   ],
+   "figures": [
+      { "url": "research-posts/figure/main.png", "alt": "Main result", "caption": "Main result overview", "layout": "single" },
+      { "url": "research-posts/figure/ablation.png", "alt": "Ablation", "caption": "Ablation study", "layout": "double" }
+   ]
+}
+```
 
 To add a post:
 

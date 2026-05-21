@@ -272,6 +272,7 @@ a,
   font-weight: 700;
   color: #000;
   line-height: 1.35;
+  letter-spacing: -0.015em;
   overflow-wrap: anywhere;
 }
 
@@ -293,7 +294,7 @@ a,
   display: grid;
   grid-template-columns: 186px 1fr;
   gap: 14px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .scenario-video-wrap {
@@ -371,7 +372,7 @@ a,
   font-size: 34px;
   line-height: 1.2;
   font-weight: 700;
-  letter-spacing: -0.07em;
+  letter-spacing: -0.04em;
   word-spacing: -0.08em;
   overflow-wrap: anywhere;
 }
@@ -412,8 +413,42 @@ a,
   text-decoration: underline;
 }
 
-.article-video {
-  margin-top: 32px;
+.article-media-gallery {
+  margin-top: 28px;
+  display: grid;
+  gap: 22px;
+}
+
+.article-media-group {
+  display: grid;
+  gap: 10px;
+}
+
+.article-media-heading {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-soft);
+}
+
+.article-media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.article-media-card {
+  margin: 0;
+  min-width: 0;
+}
+
+.article-media-layout-single {
+  grid-column: 1 / -1;
+}
+
+.article-media-layout-double {
+  grid-column: auto;
 }
 
 .article-video-frame {
@@ -421,25 +456,34 @@ a,
   background: #000;
   overflow: hidden;
   border-radius: 12px;
+  aspect-ratio: 16 / 9;
 }
 
 .article-video-player {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: contain;
   border-radius: 12px;
 }
 
 .article-figure {
-  margin: 18px 0 0;
+  margin: 0;
 }
 
 .article-figure img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 12px;
   border: 1px solid var(--line);
+}
+
+.article-media-card figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .article-body {
@@ -459,6 +503,17 @@ a,
 .join-us-view h1 {
   margin: 0 0 10px;
   font-size: 30px;
+}
+
+@media (max-width: 780px) {
+  .article-media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-media-layout-single,
+  .article-media-layout-double {
+    grid-column: 1 / -1;
+  }
 }
 
 .join-us-view p {
