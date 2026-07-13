@@ -1,6 +1,9 @@
 {
   "collection": "tutorial",
   "posts": [
-    { "slug": "comming-soon", "path": "tutorial-posts/comming-soon.json" }
+    { "slug": "vision-language-action-vla", "path": "tutorial-posts/model-vla.json" },
+    { "slug": "world-action-model-wam", "path": "tutorial-posts/model-wam.json" },
+    { "slug": "action-data", "path": "tutorial-posts/data-action.json" },
+    { "slug": "action-competition", "path": "tutorial-posts/competition-action.json" }
   ]
 }

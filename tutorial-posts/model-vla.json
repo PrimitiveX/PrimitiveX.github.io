@@ -1,0 +1,128 @@
+{
+  "slug": "vision-language-action-vla",
+  "track": "model",
+  "title": "Vision Language Action (VLA)",
+  "zhTitle": "视觉-语言-动作（VLA）",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2026-02",
+      "modelLabel": "ABot-M0",
+      "modelUrl": "https://arxiv.org/pdf/2602.11236"
+    },
+    {
+      "dateLabel": "2023-04",
+      "modelLabel": "ACT",
+      "modelUrl": "https://arxiv.org/pdf/2304.13705"
+    },
+    {
+      "dateLabel": "2022-06",
+      "modelLabel": "Behavior Transformers",
+      "modelUrl": "https://proceedings.neurips.cc/paper_files/paper/2022/file/90d17e882adbdda42349db6f50123817-Paper-Conference.pdf"
+    },
+    {
+      "dateLabel": "2026-01",
+      "modelLabel": "Being-H0.5",
+      "modelUrl": "https://arxiv.org/pdf/2601.12993"
+    },
+    {
+      "dateLabel": "2026-01",
+      "modelLabel": "Cosmos Policy",
+      "modelUrl": "https://arxiv.org/pdf/2601.16163"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "Dit4Dit",
+      "modelUrl": "https://arxiv.org/pdf/2603.10448"
+    },
+    {
+      "dateLabel": "2025-06",
+      "modelLabel": "Fast-in-Slow",
+      "modelUrl": "https://arxiv.org/pdf/2506.01953"
+    },
+    {
+      "dateLabel": "2025-03",
+      "modelLabel": "GR00T N1",
+      "modelUrl": "https://arxiv.org/pdf/2503.14734?"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "InternVLA-A1.5",
+      "modelUrl": "https://arxiv.org/pdf/2607.04988"
+    },
+    {
+      "dateLabel": "2026-01",
+      "modelLabel": "LingBot-VLA",
+      "modelUrl": "https://arxiv.org/pdf/2601.18692"
+    },
+    {
+      "dateLabel": "2024-10",
+      "modelLabel": "Pi0",
+      "modelUrl": "https://arxiv.org/pdf/2410.24164?"
+    },
+    {
+      "dateLabel": "2025-01",
+      "modelLabel": "Pi0-Fast",
+      "modelUrl": "https://arxiv.org/pdf/2501.09747"
+    },
+    {
+      "dateLabel": "2025-10",
+      "modelLabel": "Pi0.5",
+      "modelUrl": "https://www.pi.website/download/pi05.pdf"
+    },
+    {
+      "dateLabel": "2025-12",
+      "modelLabel": "Pi0.6",
+      "modelUrl": "https://www.pi.website/download/pistar06.pdf"
+    },
+    {
+      "dateLabel": "2026-04",
+      "modelLabel": "Pi0.7",
+      "modelUrl": "https://www.pi.website/download/pi07.pdf"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "Psi0",
+      "modelUrl": "https://arxiv.org/pdf/2603.12263"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "Camera Choice",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2026/papers/Xue_Rethinking_Camera_Choice_An_Empirical_Study_on_Fisheye_Camera_Properties_CVPR_2026_paper.pdf"
+    },
+    {
+      "dateLabel": "2025-06",
+      "modelLabel": "SmolVLA",
+      "modelUrl": "https://arxiv.org/pdf/2506.01844"
+    },
+    {
+      "dateLabel": "2026-05",
+      "modelLabel": "G3T",
+      "modelUrl": "https://arxiv.org/pdf/2605.11832"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "VLA-Adapter",
+      "modelUrl": "https://ojs.aaai.org/index.php/AAAI/article/view/38931/42893"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "VLAFlow",
+      "modelUrl": "https://arxiv.org/pdf/2607.01586"
+    },
+    {
+      "dateLabel": "2025-12",
+      "modelLabel": "VLSA",
+      "modelUrl": "https://arxiv.org/pdf/2512.11891"
+    },
+    {
+      "dateLabel": "2025-10",
+      "modelLabel": "X-VLA",
+      "modelUrl": "https://arxiv.org/pdf/2510.10274?"
+    }
+  ]
+}

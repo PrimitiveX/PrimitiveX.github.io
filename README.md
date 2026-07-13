@@ -1,172 +1,40 @@
-# Agentic Robot Motion (ARM) Website
+# Agentic Robot Motion (ARM)
 
-A lightweight single-page application (SPA) lab website with Home, Research, Scenario, Tutorial, and Join Us pages.
+Agentic Robot Motion (ARM) 是一支聚焦机器人运动智能与具身智能落地的研发团队。
 
-## Local Preview
+我们相信，机器人智能的成长路径可以概括为：机械记忆、深入理解、举一反三。团队以真实场景和真实任务为核心，通过持续迭代的工程体系，把算法能力转化为稳定可用的生产力。
 
-Use the SPA-aware local server so route refresh (for example `/research` or `/tutorial/:slug`) does not 404:
+## 团队定位
 
-```bash
-python spa_server.py --port 8000
-```
+ARM 致力于打造面向真实世界任务的机器人智能系统，重点覆盖：
 
-Then open `http://127.0.0.1:8000/`.
+- 机器人感知、决策与控制的一体化能力
+- 视觉-语言-动作（VLA）方向的模型研发与应用
+- 面向复杂场景的可部署、可维护、可扩展方案
 
-Notes:
+## 研究与工程方向
 
-- `python -m http.server` does not support SPA fallback and will return 404 on direct refresh of sub-routes.
-- The provided `spa_server.py` rewrites unknown route paths to `index.html` while keeping real static asset 404 behavior.
+我们的工作围绕以下主线展开：
 
-## Routing Architecture
+- 具身智能算法：从数据构建、模型训练到策略评估与优化
+- 场景化能力建设：在多变环境下保持稳健执行与泛化能力
+- 工程化落地：将实验室成果转化为可交付的系统能力
 
-- Single entry page: `index.html`
-- Client-side routing: `script.js`
-- Routes: `/`, `/research`, `/research/:slug`, `/scenario`, `/scenario/:slug`, `/tutorial`, `/tutorial/:slug`, `/join-us`, `/apply/:role`
+## 我们的价值观
 
-## Deploy to GitHub Pages
+- 面向真实问题：从业务价值和现场约束出发定义技术路径
+- 注重长期积累：重视数据、流程与系统能力的持续沉淀
+- 追求协作效率：强调跨角色协同，快速闭环“研发-验证-迭代”
 
-1. Create a new GitHub repository (for example: `arm-lab-site`).
-2. In this folder, initialize and push:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial ARM lab website"
-   git branch -M main
-   git remote add origin https://github.com/<your-user>/<your-repo>.git
-   git push -u origin main
-   ```
-3. In GitHub repo settings:
-   - Go to **Pages**.
-   - Set **Build and deployment** source to **Deploy from a branch**.
-   - Choose branch `main` and folder `/ (root)`.
-4. Save and wait 1-2 minutes. Your site will be online at:
-   `https://<your-user>.github.io/<your-repo>/`
+## 团队页面内容
 
-### Avoid 404 on Refresh (GitHub Pages)
+本仓库中的站点内容对应以下板块：
 
-This project uses browser History API routes like `/research` and `/scenario/:slug`.
+- Research：研究成果与方法演进
+- Scenario：典型应用场景与案例
+- Tutorial：模型、数据与竞赛相关知识整理
+- Join Us：岗位与申请入口
 
-- On direct refresh, GitHub Pages first looks for a physical file matching that path.
-- If the file does not exist, it serves `404.html`.
-- Our `404.html` now redirects to `/?p=<route>` and preserves search/hash.
-- `script.js` restores that route with `history.replaceState`, then renders the SPA page.
+## 联系我们
 
-For GitHub Pages deployment, make sure both `index.html` and `404.html` are published at repo root.
-
-## Customize Quickly
-
-- Page shell placeholders: edit `index.html`.
-- JSON-driven config and i18n text: edit `site-config.json`.
-- Route templates and rendering logic: edit `script.js`.
-- Style and layout visuals: edit `styles.css`.
-
-## Edit Content JSON
-
-Each section has a list file plus its own posts folder:
-
-- Research list: `research-list.json`
-- Research posts: `research-posts/*.json`
-- Scenario list: `scenario-list.json`
-- Scenario posts: `scenario-posts/*.json`
-- Tutorial list: `tutorial-list.json`
-- Tutorial posts: `tutorial-posts/*.json`
-- Join Us roles: `joinus-list.json`
-- Site-level text/config (nav, intro, apply labels, Supabase): `site-config.json`
-
-## Apply Form (Supabase)
-
-Apply submission now uses Supabase end-to-end:
-
-1. Resume file upload to Supabase Storage bucket `applications-resumes`.
-2. Form fields inserted into table `public.applications` (structured payload + flattened columns).
-3. Supabase Edge Function `send-application-email` sends forwarding email to recipients (Mr. Cui + Dr. Yang by default).
-
-### Frontend Config (`site-config.json`)
-
-Use the `supabase` block:
-
-- `supabase.enabled`: set `true` to enable submission.
-- `supabase.url`: your Supabase project URL.
-- `supabase.anonKey`: your Supabase anon public key.
-- `supabase.storageBucket`: default `applications-resumes`.
-- `supabase.emailFunctionName`: default `send-application-email`.
-- `supabase.notifyEmails`: recipient list, e.g. `cuichaochen@ymbot.com`, `omtcyang@gmail.com`.
-
-### Supabase Setup
-
-1. Run SQL in `supabase/sql/applications.sql` (creates bucket/table/policies).
-2. Deploy function in `supabase/functions/send-application-email/index.ts`.
-3. Set function secrets:
-   - `SUPABASE_URL`
-   - `SUPABASE_SERVICE_ROLE_KEY`
-   - `RESEND_API_KEY`
-   - `RESEND_FROM`
-   - `NOTIFY_EMAILS` (optional fallback, comma-separated)
-
-Example deploy commands:
-
-```bash
-supabase functions deploy send-application-email
-supabase secrets set SUPABASE_URL="https://<project-ref>.supabase.co"
-supabase secrets set SUPABASE_SERVICE_ROLE_KEY="<service-role-key>"
-supabase secrets set RESEND_API_KEY="<resend-api-key>"
-supabase secrets set RESEND_FROM="ARM Apply <onboarding@resend.dev>"
-supabase secrets set NOTIFY_EMAILS="cuichaochen@ymbot.com,omtcyang@gmail.com"
-```
-
-After setup, email subject format stays: `岗位名称 - 申请人姓名`.
-
-## JSON Cache Versioning
-
-Content JSON files are requested with a version query string to avoid stale browser/CDN cache on release.
-
-- Configure version in `site-config.json` with `dataVersion` (for example: `20260503`).
-- The app appends `?v=<dataVersion>` when requesting JSON data (lists, posts, joinus, config).
-- On each release that updates JSON content, bump `dataVersion` so clients request a new URL and fetch fresh data.
-
-Notes:
-
-- If your hosting supports `ETag` or `Last-Modified`, keep them enabled to allow efficient `304` validation.
-- `dataVersion` is the strongest guarantee for immediate content refresh after publish.
-
-## Media Asset Folders
-
-- Home media:
-   - `home-posts/video/` (home hero video, expected file: `home.mp4`)
-   - `home-posts/figure/`
-- Research media:
-   - `research-posts/video/`
-   - `research-posts/figure/`
-- Scenario media:
-   - `scenario-posts/video/`
-   - `scenario-posts/figure/`
-- Tutorial media:
-   - `tutorial-posts/video/`
-   - `tutorial-posts/figure/`
-
-Each post JSON can use either legacy single-media fields or the new multi-media arrays:
-
-- Legacy: `videoUrl`, `figureUrl`, `figureAlt`
-- Recommended: `videos` and `figures`
-- Optional per-media layout field: `layout` (`single`/`double`, or `单栏`/`双栏`)
-
-Example:
-
-```json
-{
-   "videos": [
-      { "url": "research-posts/video/demo-1.mp4", "title": "Demo 1", "layout": "single" },
-      { "url": "research-posts/video/demo-2.mp4", "title": "Demo 2", "layout": "double" }
-   ],
-   "figures": [
-      { "url": "research-posts/figure/main.png", "alt": "Main result", "caption": "Main result overview", "layout": "single" },
-      { "url": "research-posts/figure/ablation.png", "alt": "Ablation", "caption": "Ablation study", "layout": "double" }
-   ]
-}
-```
-
-To add a post:
-
-1. Create a new post JSON inside the corresponding `*-posts` folder.
-2. Add an entry for it in that section's `*-list.json` file.
-3. Reload the page.
+如需技术交流、合作沟通或加入团队，请通过官网 Join Us 页面获取最新联系方式与岗位信息。

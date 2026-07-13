@@ -1,19 +1,30 @@
 ﻿{
     "slug": "SignEye",
     "title": "SignEye: Traffic Sign Interpretation from Vehicle First-Person View",
+    "zhTitle": "SignEye：车辆第一视角交通标志语义理解",
     "isoDate": "2026-05-06",
     "dateLabel": "May 6, 2026",
+    "zhDateLabel": "2026年5月6日",
     "paperLabel": "SignEye: Traffic Sign Interpretation from Vehicle First-Person View",
+    "zhPaperLabel": "SignEye：车辆第一视角交通标志语义理解",
     "paperUrl": "https://arxiv.org/pdf/2411.11507",
     "emailLabel": "omtcyang@gmail.com",
     "emailUrl": "mailto:omtcyang@gmail.com",
     "summary": "This paper introduces a new task called Traffic Sign Interpretation from First-Person View (TSI-FPV) and proposes a Traffic Guidance Assistant (TGA) built on top of it.",
+    "zhSummary": "本文提出了交通标志第一视角语义理解（TSI-FPV）任务，并在此基础上构建了交通引导助手（TGA）。",
     "body": [
         "Traffic signs are a critical component in autonomous driving, yet most existing methods focus only on detecting and recognizing symbols, such as speed limits or prohibition signs. While these approaches can identify what a sign means, they fail to address a crucial question: which part of the road does the sign apply to? Without understanding the relationship between the vehicle’s position and the sign, the information cannot be effectively used for real driving decisions.",
         "To address this limitation, the paper proposes a new task called Traffic Sign Interpretation from First-Person View (TSI-FPV). The key idea is to go beyond content recognition and incorporate the vehicle’s egocentric perspective, enabling the system to map traffic sign information to specific lanes and roads. To achieve this, the authors introduce Ego-centric Relative Position Definition (EgoRPD), which organizes the scene into left (L), current (C), right (R), and all (A) regions, establishing a direct connection between the vehicle and surrounding traffic elements.",
         "The proposed framework, SignEye, adopts a stepwise reasoning pipeline that decomposes the complex task into several intuitive stages, including region detection, semantic parsing, structured description generation, and spatial alignment. Unlike traditional multi-stage pipelines that rely heavily on detection, classification, and OCR, SignEye formulates the problem as an image-to-text generation task. It produces structured natural language descriptions, making the results more interpretable and easier for downstream systems to utilize.",
         "Building upon TSI-FPV, the authors further develop a Traffic Guidance Assistant (TGA), which translates interpreted traffic sign information into actionable driving decisions. TGA integrates three key components: structured sign descriptions, vehicle attributes (such as speed and size), and a route graph. With this information, it can perform traffic regulation assessment (e.g., detecting speeding or illegal lane usage) and provide navigation guidance (e.g., lane changes or turns).",
         "To support training and evaluation, the paper also introduces a large-scale dataset called Traffic-CN, along with a semi-automatic data engine that generates structured annotations and decision-making samples. Experimental results demonstrate that SignEye achieves superior performance compared to existing vision-language models, particularly in tasks requiring spatial reasoning and decision-making. Overall, this work highlights the importance of integrating semantic understanding with spatial awareness for advancing autonomous driving systems."
+    ],
+    "zhBody": [
+        "交通标志是自动驾驶中的关键信息来源，但现有方法大多停留在符号检测与识别层面，例如识别限速或禁令标志。这类方法能够回答“标志本身是什么意思”，却难以回答“该标志具体作用于道路的哪一部分”。如果缺乏车辆相对位置关系，标志信息很难直接用于真实驾驶决策。",
+        "为了解决这一问题，论文提出交通标志第一视角语义理解（TSI-FPV）任务。核心思想是将车辆自车视角纳入语义解释过程，使系统能够把交通标志信息映射到具体车道与道路区域。为此作者定义了 Ego-centric Relative Position Definition（EgoRPD），把场景划分为左（L）、当前（C）、右（R）与全部（A）区域，建立车辆与交通要素之间的直接语义关联。",
+        "所提出的 SignEye 框架采用分步推理流程，将复杂任务拆解为区域检测、语义解析、结构化描述生成与空间对齐等阶段。不同于依赖检测、分类与 OCR 的传统多阶段管线，SignEye 将任务建模为图像到文本生成问题，输出结构化自然语言描述，使结果更可解释、也更便于下游系统使用。",
+        "基于 TSI-FPV，作者进一步构建了交通引导助手（TGA），将标志语义解释转化为可执行的驾驶决策。TGA 融合三类信息：结构化标志描述、车辆属性（如速度与尺寸）以及路线图结构。借助这些信息，系统可完成交通规则评估（如超速、违规占道）与导航建议（如变道、转向）等任务。",
+        "为支撑训练与评测，论文还发布了大规模数据集 Traffic-CN，并提供可生成结构化标注与决策样本的半自动数据引擎。实验结果显示，SignEye 在需要空间推理与决策能力的任务上显著优于现有视觉语言模型。该工作表明，将语义理解与空间感知深度结合是推动自动驾驶能力提升的重要路径。"
     ],
     "videos": [
         {

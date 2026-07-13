@@ -41,6 +41,8 @@ let supabaseConfig = {
 let supabaseClient = null;
 
 let joinRoleDefinitions = [];
+let pendingRouteScrollOverride = null;
+let lastViewportScroll = { x: 0, y: 0 };
 
 let applyText = null;
 
@@ -53,6 +55,11 @@ function t(path) {
     node = node?.[key];
   }
   return node;
+}
+
+function captureViewportScroll() {
+  lastViewportScroll = { x: window.scrollX, y: window.scrollY };
+  return lastViewportScroll;
 }
 
 function applySiteConfig(config) {
@@ -131,11 +138,85 @@ function localizedItemValue(item, key) {
   return item?.[key];
 }
 
+function localizedRoadmapValue(node, key) {
+  if (currentLang === "zh") {
+    const zhKey = `zh${key.charAt(0).toUpperCase()}${key.slice(1)}`;
+    if (node?.[zhKey]) {
+      return node[zhKey];
+    }
+  }
+  return node?.[key] || "";
+}
+
 function localizedCollectionTitle(collection) {
   if (collection === "join-us") {
     return t("tabTitles.join-us");
   }
   return t(`tabTitles.${collection}`) || collectionTitles[collection] || collection;
+}
+
+function roadmapMonthIndex(node) {
+  const raw = String(node?.dateLabel || node?.timeModelLabel || "").trim();
+  const ymMatch = raw.match(/(\d{4})[-/.](\d{1,2})/);
+  if (ymMatch) {
+    const year = Number(ymMatch[1]);
+    const month = Number(ymMatch[2]);
+    return year * 12 + Math.max(0, Math.min(11, month - 1));
+  }
+
+  const yearMatch = raw.match(/(\d{4})/);
+  if (yearMatch) {
+    return Number(yearMatch[1]) * 12;
+  }
+
+  return Number.MAX_SAFE_INTEGER;
+}
+
+function roadmapNodeUnits(node) {
+  const dateText = String(node?.dateLabel || node?.timeModelLabel || "").trim();
+  const modelText = String(node?.modelLabel || node?.timeModelLabel || "").trim();
+  const baseLen = Math.max(1, [...modelText].length, [...dateText].length);
+  return Math.max(6, Math.ceil(baseLen * 1.1) + 1);
+}
+
+function splitRoadmapIntoSnakeLanes(nodes) {
+  const shellWidth = Math.max(320, appView?.clientWidth || window.innerWidth || 980);
+  const charWidthPx = 8.8;
+  const maxUnits = Math.max(24, Math.floor((shellWidth - 220) / charWidthPx));
+  const gapUnits = 3;
+
+  const lanes = [];
+  let currentLane = [];
+  let usedUnits = 0;
+
+  for (const node of nodes) {
+    const nodeUnits = roadmapNodeUnits(node);
+    const nextUsedUnits = currentLane.length ? usedUnits + gapUnits + nodeUnits : nodeUnits;
+    const laneIndex = lanes.length;
+    const laneDirection = laneIndex % 2 === 0 ? "forward" : "reverse";
+    const remainingUnitsOnActiveEdge = maxUnits - nextUsedUnits;
+    const edgeSafetyUnits = Math.max(2, Math.ceil(nodeUnits * 0.18));
+    const hitsEdgeInForwardLane = laneDirection === "forward" && remainingUnitsOnActiveEdge < edgeSafetyUnits;
+    const hitsEdgeInReverseLane = laneDirection === "reverse" && remainingUnitsOnActiveEdge < edgeSafetyUnits;
+
+    // In forward lanes, the newly appended node is the visual right edge;
+    // in reverse lanes, it is the visual left edge. Wrap when edge room is insufficient.
+    if (currentLane.length && (nextUsedUnits > maxUnits || hitsEdgeInForwardLane || hitsEdgeInReverseLane)) {
+      lanes.push(currentLane);
+      currentLane = [node];
+      usedUnits = nodeUnits;
+      continue;
+    }
+
+    currentLane.push(node);
+    usedUnits = nextUsedUnits;
+  }
+
+  if (currentLane.length) {
+    lanes.push(currentLane);
+  }
+
+  return lanes;
 }
 
 function localizedRoleTitle(role) {
@@ -640,7 +721,8 @@ function renderHomeView() {
 }
 
 function renderEmptyCollection(title, hintPath) {
-  const hintTitle = localizeText(t("emptyHint"), { title: title.toLowerCase() });
+  const normalizedTitle = currentLang === "zh" ? String(title) : String(title).toLowerCase();
+  const hintTitle = localizeText(t("emptyHint"), { title: normalizedTitle });
   const hintHelp = localizeText(t("emptyHelp"), { path: hintPath });
   return `
     <section class="timeline" aria-label="${title} timeline">
@@ -659,7 +741,7 @@ function renderEmptyCollection(title, hintPath) {
 function renderResearchLikeList(collection) {
   const items = collectionData[collection];
   if (!items.length) {
-    return renderEmptyCollection(collectionTitles[collection], `${collection}-posts`);
+    return renderEmptyCollection(localizedCollectionTitle(collection), `${collection}-posts`);
   }
 
   const itemsMarkup = items
@@ -685,13 +767,13 @@ function renderResearchLikeList(collection) {
     )
     .join("");
 
-  return `<section class="timeline" aria-label="${collectionTitles[collection]} timeline">${itemsMarkup}</section>`;
+  return `<section class="timeline" aria-label="${localizedCollectionTitle(collection)} timeline">${itemsMarkup}</section>`;
 }
 
 function renderScenarioListView() {
   const items = collectionData.scenario;
   if (!items.length) {
-    return renderEmptyCollection("Scenario", "scenario-posts");
+    return renderEmptyCollection(localizedCollectionTitle("scenario"), "scenario-posts");
   }
 
   const itemsMarkup = items
@@ -722,7 +804,7 @@ function renderScenarioListView() {
     )
     .join("");
 
-  return `<section class="timeline scenario-timeline" aria-label="Scenario timeline">${itemsMarkup}</section>`;
+  return `<section class="timeline scenario-timeline" aria-label="${localizedCollectionTitle("scenario")} timeline">${itemsMarkup}</section>`;
 }
 
 function renderTutorialListItems(items) {
@@ -730,15 +812,81 @@ function renderTutorialListItems(items) {
     .map(
       (item) => {
         const title = localizedItemValue(item, "title");
-        const dateLabel = localizedItemValue(item, "dateLabel");
         const summary = localizedItemValue(item, "summary");
+
+        if (Array.isArray(item.roadmap) && item.roadmap.length) {
+          const sortedRoadmap = [...item.roadmap].sort((a, b) => {
+            const monthA = roadmapMonthIndex(a);
+            const monthB = roadmapMonthIndex(b);
+            if (monthA !== monthB) {
+              return monthA - monthB;
+            }
+            return String(a?.modelLabel || a?.timeModelLabel || "").localeCompare(
+              String(b?.modelLabel || b?.timeModelLabel || "")
+            );
+          });
+          const lanes = splitRoadmapIntoSnakeLanes(sortedRoadmap);
+
+          const roadmapMarkup = lanes
+            .map((laneNodes, laneIndex) => {
+              const laneDirection = laneIndex % 2 === 0 ? "forward" : "reverse";
+              const laneNodesMarkup = laneNodes
+                .map((node, nodeIndex) => {
+                  const dateText = String(localizedRoadmapValue(node, "dateLabel") || node.timeModelLabel || "").trim();
+                  const modelText = String(localizedRoadmapValue(node, "modelLabel") || node.timeModelLabel || "").trim();
+                  const modelCharCount = roadmapNodeUnits(node);
+                  const modelUrl = String(node.modelUrl || "").trim();
+                  const dateMarkup = `<span class="roadmap-point-text roadmap-date">${dateText}</span>`;
+                  const modelMarkup = modelUrl
+                    ? `<a class="roadmap-point-link roadmap-model" href="${resolveDataUrl(modelUrl)}" target="_blank" rel="noopener noreferrer">${modelText}</a>`
+                    : `<span class="roadmap-point-text roadmap-model">${modelText}</span>`;
+
+                  return `
+                    <article class="tutorial-roadmap-point" style="--model-ch:${modelCharCount};">
+                      <div class="tutorial-roadmap-info">
+                        ${dateMarkup}
+                        ${modelMarkup}
+                      </div>
+                      <span class="tutorial-roadmap-dot" aria-hidden="true"></span>
+                    </article>
+                  `;
+                })
+                .join("");
+
+              const connectorMarkup =
+                laneIndex < lanes.length - 1
+                  ? `<div class="tutorial-roadmap-turn ${laneDirection === "forward" ? "at-right" : "at-left"}" aria-hidden="true"></div>`
+                  : "";
+
+              return `
+                <div class="tutorial-roadmap-lane ${laneDirection}">
+                  ${laneNodesMarkup}
+                </div>
+                ${connectorMarkup}
+              `;
+            })
+            .join("");
+
+          return `
+            <article class="timeline-item tutorial-item tutorial-roadmap-entry">
+              <div class="timeline-head tutorial-roadmap-title">
+                <h2>${title}</h2>
+              </div>
+              <div class="tutorial-roadmap-item">
+                <div class="tutorial-roadmap" aria-label="${title} roadmap">
+                  ${roadmapMarkup}
+                </div>
+              </div>
+            </article>
+          `;
+        }
+
         return `
         <article class="timeline-item tutorial-item">
           <a class="timeline-link" href="${pathForRoute({ name: "tutorial-detail", collection: "tutorial", slug: item.slug })}" data-route-path="${pathForRoute({ name: "tutorial-detail", collection: "tutorial", slug: item.slug })}">
             <div class="timeline-content">
               <div class="timeline-head">
                 <h2>${title}</h2>
-                <time class="timeline-date" datetime="${item.isoDate}">${dateLabel}</time>
               </div>
               <p>${summary}</p>
             </div>
@@ -753,16 +901,15 @@ function renderTutorialListItems(items) {
 function renderTutorialListView() {
   const allItems = collectionData.tutorial;
   if (!allItems.length) {
-    return renderEmptyCollection("Tutorial", "tutorial-posts");
+    return renderEmptyCollection(localizedCollectionTitle("tutorial"), "tutorial-posts");
   }
 
-  const tracks = ["all", "vla", "slam", "motion-planning", "writing-a-paper"];
+  const tracks = ["all", "model", "data", "competition"];
   const labels = {
-    all: "All",
-    vla: t("tutorialTracks.vla"),
-    slam: t("tutorialTracks.slam"),
-    "motion-planning": t("tutorialTracks.motion-planning"),
-    "writing-a-paper": t("tutorialTracks.writing-a-paper") || "Writing a Paper",
+    all: t("tutorialTracks.all") || (currentLang === "zh" ? "全部" : "All"),
+    model: t("tutorialTracks.model"),
+    data: t("tutorialTracks.data"),
+    competition: t("tutorialTracks.competition"),
   };
 
   const visibleItems =
@@ -776,7 +923,8 @@ function renderTutorialListView() {
   const itemsMarkup = visibleItems.length
     ? renderTutorialListItems(visibleItems)
     : (() => {
-        const activeLabel = String(labels[activeTutorialTrack] || "tutorial").toLowerCase();
+        const activeLabelRaw = String(labels[activeTutorialTrack] || localizedCollectionTitle("tutorial"));
+        const activeLabel = currentLang === "zh" ? activeLabelRaw : activeLabelRaw.toLowerCase();
         const hintTitle = localizeText(t("emptyHint"), { title: activeLabel });
         const hintHelp = localizeText(t("emptyHelp"), { path: "tutorial-posts" });
         return `
@@ -821,6 +969,7 @@ function normalizeMediaLayout(layout, fallback = "double") {
 
 function normalizeDetailVideos(item) {
   const videos = [];
+  const defaultVideoTitle = currentLang === "zh" ? "视频" : "Video";
 
   if (Array.isArray(item.videos)) {
     for (const [index, video] of item.videos.entries()) {
@@ -828,7 +977,7 @@ function normalizeDetailVideos(item) {
         videos.push({
           url: resolveDataUrl(video.trim()),
           poster: "",
-          title: `Video ${index + 1}`,
+          title: `${defaultVideoTitle} ${index + 1}`,
           caption: "",
           layout: "double",
         });
@@ -839,7 +988,7 @@ function normalizeDetailVideos(item) {
         videos.push({
           url: resolveDataUrl(String(video.url)),
           poster: video.poster ? resolveDataUrl(String(video.poster)) : "",
-          title: video.title ? String(video.title) : `Video ${index + 1}`,
+          title: video.title ? String(video.title) : `${defaultVideoTitle} ${index + 1}`,
           caption: video.caption ? String(video.caption) : "",
           layout: normalizeMediaLayout(video.layout),
         });
@@ -851,7 +1000,7 @@ function normalizeDetailVideos(item) {
     videos.push({
       url: resolveDataUrl(item.videoUrl),
       poster: item.videoPoster ? resolveDataUrl(item.videoPoster) : "",
-      title: "Video",
+      title: defaultVideoTitle,
       caption: "",
       layout: "single",
     });
@@ -862,13 +1011,14 @@ function normalizeDetailVideos(item) {
 
 function normalizeDetailFigures(item, title) {
   const figures = [];
+  const figureSuffix = currentLang === "zh" ? "图" : "figure";
 
   if (Array.isArray(item.figures)) {
     for (const [index, figure] of item.figures.entries()) {
       if (typeof figure === "string" && figure.trim()) {
         figures.push({
           url: resolveDataUrl(figure.trim()),
-          alt: `${title} figure ${index + 1}`,
+          alt: `${title} ${figureSuffix} ${index + 1}`,
           caption: "",
           layout: "double",
         });
@@ -878,7 +1028,7 @@ function normalizeDetailFigures(item, title) {
       if (figure && typeof figure === "object" && figure.url) {
         figures.push({
           url: resolveDataUrl(String(figure.url)),
-          alt: figure.alt ? String(figure.alt) : `${title} figure ${index + 1}`,
+          alt: figure.alt ? String(figure.alt) : `${title} ${figureSuffix} ${index + 1}`,
           caption: figure.caption ? String(figure.caption) : "",
           layout: normalizeMediaLayout(figure.layout),
         });
@@ -889,7 +1039,7 @@ function normalizeDetailFigures(item, title) {
   if (!figures.length && item.figureUrl) {
     figures.push({
       url: resolveDataUrl(item.figureUrl),
-      alt: item.figureAlt || `${title} figure`,
+      alt: localizedItemValue(item, "figureAlt") || item.figureAlt || `${title} ${figureSuffix}`,
       caption: item.figureCaption || "",
       layout: "single",
     });
@@ -1009,28 +1159,22 @@ function renderJoinUsView() {
   };
 
   const joinText = t("joinUs");
-  const isZh = currentLang === "zh";
-  const companyText = String(joinText.company || "").replace(/[。.]\s*$/, "");
-  const websiteUrl = joinText.websiteUrl || "http://www.ymbot.com/home";
-  const websiteLabel = joinText.websiteLabel || "official website";
+  const companyText = String(joinText.company || "");
   const projectLeaderEmail = joinText.projectLeaderEmail || "cuichaochen@ymbot.com";
   const researchHeadEmail = joinText.researchHeadEmail || "omtcyang@gmail.com";
   const qualificationsLabel = joinText.qualificationsLabel || "Qualifications";
   const dutiesLabel = joinText.dutiesLabel || "Duties";
-  const onlineApply = joinText.onlineApply || (isZh ? "在线申请" : "Apply Online");
+  const onlineApply = joinText.onlineApply || (currentLang === "zh" ? "在线申请" : "Apply Online");
   const projectLeaderLabel = joinText.projectLeaderLabel || "Project Leader Mr. Cui";
   const researchHeadLabel = joinText.researchHeadLabel || "Research Head Dr. Yang";
-  const projectLeaderParts = splitContactLabel(projectLeaderLabel, isZh ? "项目负责人" : "Project Leader", "Mr. Cui");
-  const researchHeadParts = splitContactLabel(researchHeadLabel, isZh ? "研究负责人" : "Research Head", "Dr. Yang");
-  const projectLeaderLink = `<span class="contact-role">${projectLeaderParts.role}</span> <a class="contact-link" href="mailto:${projectLeaderEmail}">${projectLeaderParts.name}</a>`;
+  const projectLeaderParts = splitContactLabel(projectLeaderLabel, currentLang === "zh" ? "项目负责人" : "Project Leader", "Mr. Cui");
+  const researchHeadParts = splitContactLabel(researchHeadLabel, currentLang === "zh" ? "研究负责人" : "Research Head", "Dr. Yang");
   const researchHeadLink = `<span class="contact-role">${researchHeadParts.role}</span> <a class="contact-link" href="mailto:${researchHeadEmail}">${researchHeadParts.name}</a>`;
   const contactTemplate =
     joinText.contactTemplate ||
-    (isZh
-      ? "如有任何问题，请联系（{projectLeader} 或 {researchHead}）。"
-      : "Contact us ({projectLeader} or {researchHead}) if you have any questions.");
+    (currentLang === "zh" ? "如有任何问题，请联系（{researchHead}）。" : "Contact me ({researchHead}) if you have any questions.");
   const contactSentence = localizeText(contactTemplate, {
-    projectLeader: projectLeaderLink,
+    projectLeader: `<span class="contact-role">${projectLeaderParts.role}</span> <a class="contact-link" href="mailto:${projectLeaderEmail}">${projectLeaderParts.name}</a>`,
     researchHead: researchHeadLink,
   });
   const jobsMarkup = joinRoleDefinitions
@@ -1065,7 +1209,7 @@ function renderJoinUsView() {
 
   return `
     <section class="join-us-view" aria-label="Join us">
-      <p>${companyText} <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer">${websiteLabel}</a>${isZh ? "。" : "."}</p>
+      <p>${companyText}</p>
       <p>${joinText.hiring}</p>
       <p>${contactSentence}</p>
       <section class="jobs-list" aria-label="Open positions">${jobsMarkup}</section>
@@ -1404,7 +1548,7 @@ function bindRouteLinks() {
     link.addEventListener("click", (event) => {
       event.preventDefault();
       const targetRoute = link.getAttribute("data-route-link") || "home";
-      applyRoute({ name: targetRoute }, "push");
+      applyRoute({ name: targetRoute }, "push", { scrollOverride: captureViewportScroll() });
     });
   }
 }
@@ -1421,16 +1565,18 @@ function bindFloatingControls() {
   if (globalBackButton) {
     globalBackButton.addEventListener("click", () => {
       if (window.history.length > 1) {
+        pendingRouteScrollOverride = captureViewportScroll();
         window.history.back();
         return;
       }
-      applyRoute({ name: "home" }, "push");
+      applyRoute({ name: "home" }, "push", { scrollOverride: captureViewportScroll() });
     });
   }
 
   const globalForwardButton = document.querySelector("[data-go-forward]");
   if (globalForwardButton) {
     globalForwardButton.addEventListener("click", () => {
+      pendingRouteScrollOverride = captureViewportScroll();
       window.history.forward();
     });
   }
@@ -1455,7 +1601,7 @@ function bindViewInteractions() {
         return;
       }
 
-      applyRoute(routeFromPath(nextPath), "push");
+      applyRoute(routeFromPath(nextPath), "push", { scrollOverride: captureViewportScroll() });
     });
 
     appView.dataset.routePathDelegateBound = "true";
@@ -1469,7 +1615,7 @@ function bindViewInteractions() {
         return;
       }
       activeTutorialTrack = track;
-      applyRoute({ name: "tutorial" }, "replace");
+      applyRoute({ name: "tutorial" }, "replace", { scrollOverride: captureViewportScroll() });
     });
   }
 
@@ -1912,12 +2058,33 @@ function renderRoute(route) {
   return { route, nextMarkup, detailItem };
 }
 
+function restoreViewportScroll(left, top) {
+  window.scrollTo({ top, left, behavior: "auto" });
+  requestAnimationFrame(() => {
+    window.scrollTo({ top, left, behavior: "auto" });
+  });
+  lastViewportScroll = { x: left, y: top };
+}
+
+function restoreViewportScrollForRoute(routeName, left, top) {
+  restoreViewportScroll(left, top);
+  if (routeName === "home") {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        window.scrollTo({ top, left, behavior: "auto" });
+      });
+    });
+  }
+}
+
 function applyRoute(route, mode = "replace", options = {}) {
   if (!appView) {
     return;
   }
 
-  const { preserveScroll = false, expandedRoleIds = [] } = options;
+  const { preserveScroll = true, expandedRoleIds = [], scrollOverride = null } = options;
+  const scrollX = preserveScroll ? (scrollOverride?.x ?? lastViewportScroll.x ?? window.scrollX) : 0;
+  const scrollY = preserveScroll ? (scrollOverride?.y ?? lastViewportScroll.y ?? window.scrollY) : 0;
 
   applyLocalizedShellText();
 
@@ -1940,18 +2107,29 @@ function applyRoute(route, mode = "replace", options = {}) {
     window.history.pushState({ route: rendered.route }, "", targetPath);
   }
 
-  if (rendered.route.name === "apply" && !preserveScroll) {
+  if (preserveScroll) {
+    restoreViewportScrollForRoute(rendered.route.name, scrollX, scrollY);
+  } else if (rendered.route.name === "apply") {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 }
 
 window.addEventListener("popstate", () => {
-  applyRoute(routeFromPath(window.location.pathname));
+  const scrollOverride = pendingRouteScrollOverride || captureViewportScroll();
+  pendingRouteScrollOverride = null;
+  applyRoute(routeFromPath(window.location.pathname), "replace", { scrollOverride });
 });
 
 async function startApp() {
   if (!appView) {
     return;
+  }
+
+  window.addEventListener("scroll", captureViewportScroll, { passive: true });
+  captureViewportScroll();
+
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
   }
 
   restoreRouteFromQuery();
@@ -1969,8 +2147,13 @@ async function startApp() {
     if (introSection) {
       introSection.hidden = true;
     }
+    const titleText = currentLang === "zh" ? "数据加载失败" : "Data Load Error";
+    const bodyText =
+      currentLang === "zh"
+        ? "无法加载所需的 JSON 配置或内容，请检查 site-config.json 与列表 JSON 文件。"
+        : "Could not load required JSON configuration/content. Check site-config.json and list JSON files.";
     appView.innerHTML =
-      `<section class="join-us-view"><h1>Data Load Error</h1><p>Could not load required JSON configuration/content. Check site-config.json and list JSON files.</p></section>`;
+      `<section class="join-us-view"><h1>${titleText}</h1><p>${bodyText}</p></section>`;
     return;
   }
 

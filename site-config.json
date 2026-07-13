@@ -30,7 +30,7 @@
   },
   "applyText": {
     "en": {
-      "title": "Apply to ARM @ YMBot",
+      "title": "Apply to ARM",
       "subtitle": "Submit your profile and we will contact you shortly.",
       "roleDetailTitle": "Position Details",
       "qualificationsLabel": "Qualifications",
@@ -88,7 +88,7 @@
       "successSuffix": "We will get back to you soon."
     },
     "zh": {
-      "title": "申请加入 ARM @ YMBot",
+      "title": "申请加入 ARM",
       "subtitle": "提交你的信息后，我们会尽快联系你。",
       "roleDetailTitle": "岗位详情",
       "qualificationsLabel": "任职要求",
@@ -155,7 +155,7 @@
         "tutorial": "Tutorial",
         "join-us": "Join Us"
       },
-      "logoHtml": "Agentic Robot Motion <span class=\"plain-at\">@</span> YMBot",
+      "logoHtml": "Agentic Robot Motion",
       "intro": "Agentic Robot Motion is guided by the Chinese educational philosophy of “rote memorization → deep understanding → generalization by analogy.” We build productive entry-level robotic workers that generate real-world economic value through memorization-based learning; they evolve into single-domain experts through self-learning in practice, and ultimately generalize their capabilities by analogy—acting as correctors for future general-purpose agents and serving as intelligence primitives that seamlessly augment other agents and human workflows.",
       "footer": "Agentic Robot Motion",
       "langToggle": "简体中文",
@@ -173,20 +173,20 @@
         "resource": "Resource:"
       },
       "tutorialTracks": {
-        "vla": "VLA",
-        "slam": "SLAM",
-        "motion-planning": "Motion Planning",
-        "writing-a-paper": "Writing a Paper"
+        "all": "All",
+        "model": "Model",
+        "data": "Data",
+        "competition": "Competition"
       },
       "emptyHint": "No {title} entries found",
       "emptyHelp": "Add JSON files under {path} and reload.",
       "joinUs": {
-        "title": "Join ARM @ YMBot",
-        "company": "We are an intelligent robotics manufacturing company that builds robots and develops robotic intelligence systems.",
+        "title": "Join ARM",
+        "company": "We focus on developing robotic intelligence systems.",
         "websiteLabel": "official website",
         "websiteUrl": "http://www.ymbot.com/home",
         "hiring": "We are hiring VLA engineers (full-time), SLAM engineers (full-time), motion planning engineers (full-time), and VLA algorithm researchers (intern) who want to build embodied intelligence systems for real-world production tasks.",
-        "contactTemplate": "Contact us ({projectLeader} or {researchHead}) if you have any questions.",
+        "contactTemplate": "Contact me ({researchHead}) if you have any questions.",
         "projectLeaderLabel": "Project Leader Mr. Cui",
         "projectLeaderEmail": "cuichaochen@ymbot.com",
         "researchHeadLabel": "Research Head Dr. Yang",
@@ -204,7 +204,7 @@
         "tutorial": "教程",
         "join-us": "加入我们"
       },
-      "logoHtml": "ARM 机器人运动智能 <span class=\"plain-at\">@</span> YMBot",
+      "logoHtml": "ARM 机器人运动智能",
       "intro": "Agentic Robot Motion 受中国教育哲学 “机械记忆 → 深入理解 → 举一反三” 的启发。我们首先打造一批入门级机器人工作者，通过基于记忆的学习方式进入真实生产环境，在工厂中创造实际经济价值；接着在持续的实践过程中不断积累环境交互数据，从重复执行中归纳任务的深层结构与规律，由机械复现逐步走向对任务本质的理解，进化为单一领域专家；最终，通过对单一领域本质的掌握激发举一反三的能力——即使面对未见过的场景仍能自主有效应对：既可作为未来通用智能体系统的纠错器，也可作为智能基础单元无缝嵌入其他智能体与人类工作流，实现能力增强与协同扩展。",
       "footer": "Agentic Robot Motion",
       "langToggle": "English",
@@ -222,20 +222,20 @@
         "resource": "资源:"
       },
       "tutorialTracks": {
-        "vla": "VLA",
-        "slam": "SLAM",
-        "motion-planning": "运动规划",
-        "writing-a-paper": "论文写作"
+        "all": "全部",
+        "model": "模型",
+        "data": "数据",
+        "competition": "竞赛"
       },
       "emptyHint": "未找到 {title} 条目",
       "emptyHelp": "请在 {path} 下添加 JSON 文件后刷新。",
       "joinUs": {
-        "title": "加入 ARM @ YMBot",
-        "company": "我们是一家智能机器人智造公司，生产机器人并研发机器人智能系统。",
+        "title": "加入 ARM",
+        "company": "我们专注于机器人智能系统研发。",
         "websiteLabel": "官网",
         "websiteUrl": "http://www.ymbot.com/home",
         "hiring": "我们正在招聘 VLA 工程师（全职）、SLAM 工程师（全职）、运动规划工程师（全职）以及 VLA 算法研究员（实习），共同构建面向真实生产任务的具身智能系统。",
-        "contactTemplate": "如有任何问题，请联系（{projectLeader} 或 {researchHead}）。",
+        "contactTemplate": "如有任何问题，请联系（{researchHead}）。",
         "projectLeaderLabel": "项目负责人 Mr. Cui",
         "projectLeaderEmail": "cuichaochen@ymbot.com",
         "researchHeadLabel": "研究负责人 Dr. Yang",

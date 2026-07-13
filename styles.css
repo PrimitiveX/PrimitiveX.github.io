@@ -5,7 +5,8 @@
   --muted-soft: #6f6c64;
   --line: #c6c3bc;
   --warn: #f5f4ef;
-  --content-max: 96ch;
+  --content-max: 108ch;
+  --shell-width: min(1120px, 96vw);
 }
 
 * {
@@ -28,19 +29,14 @@ body {
   letter-spacing: -0.03em;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding-top: 46px;
+  padding-top: 31px;
 }
 
 .site-header,
-.page-main {
-  width: min(980px, 94vw);
-  margin-left: auto;
-  margin-right: auto;
-}
-
+.page-main,
 .site-footer {
-  width: min(980px, 94vw);
-  margin-left: auto;
+  width: var(--shell-width);
+  margin-left: calc((100vw - var(--shell-width)) / 3);
   margin-right: auto;
 }
 
@@ -49,7 +45,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 20px 0 14px;
+  padding: 13px 0 14px;
 }
 
 .logo,
@@ -182,6 +178,7 @@ a,
 
 .video-frame {
   width: 100%;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #000;
   border-radius: 12px;
@@ -189,7 +186,7 @@ a,
 
 .hero-video {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: contain;
   background: #000;
@@ -210,7 +207,7 @@ a,
   top: 9px;
   bottom: 18px;
   width: 1px;
-  background: #000;
+  background: var(--line);
 }
 
 .timeline-item {
@@ -348,11 +345,188 @@ a,
 }
 
 .tutorial-timeline {
-  margin-top: 10px;
+  margin-top: 22px;
 }
 
 .tutorial-timeline::before {
   top: 9px;
+}
+
+.tutorial-timeline .timeline-item + .timeline-item {
+  border-top: 0;
+}
+
+.tutorial-roadmap-item {
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 10px 9px 0;
+  margin: 0 0 16px;
+  width: 100%;
+}
+
+.tutorial-roadmap-title {
+  display: inline-flex;
+  align-items: center;
+  background: #d7d4cc;
+  border: 1px solid #b8b5ad;
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin: 0 0 6px;
+}
+
+.tutorial-roadmap-title h2 {
+  margin: 0;
+  color: #000;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.tutorial-roadmap-entry {
+  padding-top: 10px;
+}
+
+.tutorial-roadmap {
+  --roadmap-point-height: 50px;
+  --roadmap-lane-pad-top: 3px;
+  --roadmap-lane-pad-bottom: 0px;
+  --roadmap-first-lane-extra-top: 12px;
+  margin: 0;
+  padding-top: 15px;
+  display: grid;
+  gap: 0;
+  overflow-x: hidden;
+}
+
+.tutorial-roadmap-lane {
+  --lane-center-nudge: calc((var(--roadmap-lane-pad-bottom) - var(--roadmap-lane-pad-top)) / 2);
+  --lane-label-nudge: var(--lane-center-nudge);
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 3ch;
+  align-items: stretch;
+  padding: var(--roadmap-lane-pad-top) 22px var(--roadmap-lane-pad-bottom) 2px;
+  width: 100%;
+}
+
+.tutorial-roadmap-lane:first-child {
+  padding-top: calc(var(--roadmap-lane-pad-top) + var(--roadmap-first-lane-extra-top));
+  --lane-center-nudge: calc((var(--roadmap-lane-pad-bottom) - (var(--roadmap-lane-pad-top) + var(--roadmap-first-lane-extra-top))) / 2);
+  --lane-label-nudge: var(--lane-center-nudge);
+}
+
+.tutorial-roadmap-lane::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-50%);
+}
+
+.tutorial-roadmap-lane.reverse {
+  direction: rtl;
+}
+
+.tutorial-roadmap-lane.reverse .tutorial-roadmap-point {
+  direction: ltr;
+}
+
+.tutorial-roadmap-point {
+  position: relative;
+  flex: 0 0 auto;
+  width: calc(var(--model-ch, 1) * 1ch);
+  min-height: var(--roadmap-point-height);
+}
+
+.tutorial-roadmap-info {
+  position: absolute;
+  left: 50%;
+  bottom: calc(50% + 5px - var(--lane-label-nudge));
+  transform: translateX(-50%);
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: 0px;
+  text-align: center;
+  width: calc(var(--model-ch, 1) * 1ch);
+}
+
+.tutorial-roadmap-dot {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + var(--lane-center-nudge));
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--line);
+  border: 1px dashed #000;
+  box-shadow: none;
+  z-index: 1;
+}
+
+.roadmap-point-link,
+.roadmap-point-text {
+  display: block;
+  white-space: nowrap;
+}
+
+.roadmap-point-link {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px dashed #000;
+}
+
+.roadmap-point-link:hover,
+.roadmap-point-link:focus-visible {
+  color: #000;
+  text-decoration: none;
+  border-bottom-style: solid;
+}
+
+.roadmap-date {
+  color: var(--muted-soft);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.roadmap-model {
+  color: var(--text);
+  border-bottom-color: var(--text);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.tutorial-roadmap-turn {
+  position: relative;
+  height: 0;
+}
+
+.tutorial-roadmap-turn::before {
+  content: "";
+  position: absolute;
+  height: calc(var(--roadmap-point-height) + var(--roadmap-lane-pad-top) + var(--roadmap-lane-pad-bottom));
+  top: calc(-1 * ((var(--roadmap-point-height) + var(--roadmap-lane-pad-top) + var(--roadmap-lane-pad-bottom)) / 2));
+  width: 1px;
+  background: var(--line);
+}
+
+.tutorial-roadmap > .tutorial-roadmap-lane:first-child + .tutorial-roadmap-turn::before {
+  height: calc(var(--roadmap-point-height) + var(--roadmap-lane-pad-top) + var(--roadmap-lane-pad-bottom) + (var(--roadmap-first-lane-extra-top) / 2));
+  top: calc(-1 * (((var(--roadmap-point-height) + var(--roadmap-lane-pad-top) + var(--roadmap-lane-pad-bottom)) / 2) + (var(--roadmap-first-lane-extra-top) / 2)));
+}
+
+.tutorial-roadmap-turn.at-right::before {
+  right: 0;
+}
+
+.tutorial-roadmap-turn.at-left::before {
+  left: 0;
 }
 
 
@@ -910,7 +1084,7 @@ a,
 .site-footer p {
   margin: 0;
   width: min(var(--content-max), 100%);
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.08;
   color: var(--muted-soft);
   font-weight: 400;
@@ -978,7 +1152,7 @@ a,
   }
 
   body {
-    padding-top: 32px;
+    padding-top: 21px;
   }
 
   .timeline-head {
@@ -998,6 +1172,33 @@ a,
   .tutorial-top-nav {
     margin-left: 0;
     flex-wrap: wrap;
+  }
+
+  .tutorial-roadmap-lane {
+    gap: 3ch;
+    --roadmap-point-height: 46px;
+    --roadmap-lane-pad-top: 3px;
+    --roadmap-lane-pad-bottom: 0px;
+  }
+
+  .tutorial-roadmap {
+    --roadmap-first-lane-extra-top: 10px;
+  }
+
+  .tutorial-roadmap-lane {
+    padding: var(--roadmap-lane-pad-top) 16px var(--roadmap-lane-pad-bottom) 2px;
+  }
+
+  .tutorial-roadmap-lane:first-child {
+    padding-top: calc(var(--roadmap-lane-pad-top) + var(--roadmap-first-lane-extra-top));
+  }
+
+  .tutorial-roadmap-point {
+    min-height: var(--roadmap-point-height);
+  }
+
+  .tutorial-roadmap-info {
+    width: min(98%, 180px);
   }
 
   .timeline {

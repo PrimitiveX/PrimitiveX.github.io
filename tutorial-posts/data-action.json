@@ -1,0 +1,58 @@
+{
+  "slug": "action-data",
+  "track": "data",
+  "title": "Action Data",
+  "zhTitle": "动作数据",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2023-10",
+      "modelLabel": "OXE",
+      "modelUrl": "https://arxiv.org/pdf/2310.08864"
+    },
+    {
+      "dateLabel": "2025-12",
+      "modelLabel": "OXE-Aug",
+      "modelUrl": "https://arxiv.org/pdf/2512.13100"
+    },
+    {
+      "dateLabel": "2025-09",
+      "modelLabel": "Galaxea",
+      "modelUrl": "https://arxiv.org/pdf/2509.00576?"
+    },
+    {
+      "dateLabel": "2025-03",
+      "modelLabel": "AgiBot-Beta",
+      "modelUrl": "https://arxiv.org/pdf/2503.06669?"
+    },
+    {
+      "dateLabel": "2025-11",
+      "modelLabel": "RoboCOIN",
+      "modelUrl": "https://arxiv.org/pdf/2511.17441"
+    },
+    {
+      "dateLabel": "2024-12",
+      "modelLabel": "RoboMIND",
+      "modelUrl": "https://arxiv.org/pdf/2412.13877"
+    },
+    {
+      "dateLabel": "2025-06",
+      "modelLabel": "RoboTwin2.0",
+      "modelUrl": "https://arxiv.org/pdf/2506.18088"
+    },
+    {
+      "dateLabel": "2025-11",
+      "modelLabel": "InternData-A1",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2026/papers/Tian_InternData-A1_Pioneering_High-Fidelity_Synthetic_Data_for_Pre-training_Generalist_Policy_CVPR_2026_paper.pdf"
+    },
+    {
+      "dateLabel": "2025-03",
+      "modelLabel": "GraspVLA",
+      "modelUrl": "https://arxiv.org/pdf/2505.03233"
+    }
+  ]
+}

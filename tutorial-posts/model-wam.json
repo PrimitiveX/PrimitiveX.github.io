@@ -1,0 +1,53 @@
+{
+  "slug": "world-action-model-wam",
+  "track": "model",
+  "title": "World Action Model (WAM)",
+  "zhTitle": "世界动作模型（WAM）",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2025-12",
+      "modelLabel": "Motus",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2026/papers/Bi_Motus_A_Unified_Latent_Action_World_Model_CVPR_2026_paper.pdf"
+    },
+    {
+      "dateLabel": "2026-02",
+      "modelLabel": "DreamDojo",
+      "modelUrl": "https://arxiv.org/pdf/2602.06949"
+    },
+    {
+      "dateLabel": "2026-02",
+      "modelLabel": "DreamZero",
+      "modelUrl": "https://arxiv.org/pdf/2602.15922"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "Fast-WAM",
+      "modelUrl": "https://arxiv.org/pdf/2603.16666"
+    },
+    {
+      "dateLabel": "2026-01",
+      "modelLabel": "LingBot-VA",
+      "modelUrl": "https://arxiv.org/pdf/2601.21998"
+    },
+    {
+      "dateLabel": "2025-12",
+      "modelLabel": "Video2Act",
+      "modelUrl": "https://arxiv.org/pdf/2512.03044"
+    },
+    {
+      "dateLabel": "2025-06",
+      "modelLabel": "WorldVLA",
+      "modelUrl": "https://arxiv.org/pdf/2506.21539?"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "ABot-M0.5",
+      "modelUrl": "https://arxiv.org/pdf/2607.00678"
+    }
+  ]
+}
