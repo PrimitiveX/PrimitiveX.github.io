@@ -48,6 +48,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "ABot-M0.5",
       "modelUrl": "https://arxiv.org/pdf/2607.00678"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "LingBot-VA 2.0",
+      "modelUrl": "https://arxiv.org/pdf/2607.08639"
     }
   ]
 }

@@ -123,6 +123,11 @@
       "dateLabel": "2025-10",
       "modelLabel": "X-VLA",
       "modelUrl": "https://arxiv.org/pdf/2510.10274?"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "LingBot-VLA 2.0",
+      "modelUrl": "https://arxiv.org/pdf/2607.06403"
     }
   ]
 }

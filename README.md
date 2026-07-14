@@ -1,6 +1,6 @@
-# Agentic Robot Motion (ARM)
+# Primitive X (ARM)
 
-Agentic Robot Motion (ARM) 是一支聚焦机器人运动智能与具身智能落地的研发团队。
+Primitive X (ARM) 是一支聚焦机器人运动智能与具身智能落地的研发团队。
 
 我们相信，机器人智能的成长路径可以概括为：机械记忆、深入理解、举一反三。团队以真实场景和真实任务为核心，通过持续迭代的工程体系，把算法能力转化为稳定可用的生产力。
 

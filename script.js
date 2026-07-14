@@ -11,7 +11,6 @@ let homeVideoUrl = "home-posts/video/home.mp4";
 
 let listConfig = {
   research: "research-list.json",
-  scenario: "scenario-list.json",
   tutorial: "tutorial-list.json",
 };
 
@@ -526,7 +525,19 @@ async function fetchJson(relativePath, options = {}) {
 
 async function loadCollection(name) {
   const listPath = listConfig[name];
-  const listData = await fetchJson(listPath);
+  if (!listPath) {
+    collectionData[name] = [];
+    return;
+  }
+
+  let listData = null;
+  try {
+    listData = await fetchJson(listPath);
+  } catch (error) {
+    console.warn(`Skip ${name}: failed to load list ${listPath}.`, error);
+    collectionData[name] = [];
+    return;
+  }
   const baseDir = listPath.slice(0, listPath.lastIndexOf("/") + 1);
 
   const resolvePostPath = (post) => {
@@ -536,7 +547,7 @@ async function loadCollection(name) {
         return configuredPath;
       }
 
-      // Keep project-root style paths unchanged (for example: "scenario-posts/foo.json").
+      // Keep project-root style paths unchanged (for example: "research-posts/foo.json").
       if (configuredPath.startsWith(`${name}-posts/`)) {
         return configuredPath;
       }
@@ -549,14 +560,30 @@ async function loadCollection(name) {
 
   const postPaths = (listData.posts || []).map((post) => resolvePostPath(post));
 
-  const posts = await Promise.all(postPaths.map((path) => fetchJson(path)));
+  const postResults = await Promise.allSettled(postPaths.map((path) => fetchJson(path)));
+  const posts = postResults
+    .filter((result) => result.status === "fulfilled")
+    .map((result) => result.value);
+
+  const failedCount = postResults.length - posts.length;
+  if (failedCount > 0) {
+    console.warn(`Skip ${failedCount} broken ${name} post(s) from ${listPath}.`);
+  }
+
   collectionData[name] = posts
     .slice()
     .sort((a, b) => new Date(b.isoDate).getTime() - new Date(a.isoDate).getTime());
 }
 
 async function loadJoinUsRoles() {
-  const listData = await fetchJson(joinUsListPath);
+  let listData = null;
+  try {
+    listData = await fetchJson(joinUsListPath);
+  } catch (error) {
+    console.warn(`Skip join-us: failed to load ${joinUsListPath}.`, error);
+    joinRoleDefinitions = [];
+    return;
+  }
   const roles = Array.isArray(listData?.roles) ? listData.roles : [];
 
   if (!roles.length) {
@@ -596,10 +623,16 @@ async function loadSiteConfig() {
 }
 
 async function loadAllCollections() {
-  await Promise.all([
+  const results = await Promise.allSettled([
     ...Object.keys(listConfig).map((name) => loadCollection(name)),
     loadJoinUsRoles(),
   ]);
+
+  for (const result of results) {
+    if (result.status === "rejected") {
+      console.warn("A collection loader failed and was ignored.", result.reason);
+    }
+  }
 }
 
 function pathForRoute(route) {
