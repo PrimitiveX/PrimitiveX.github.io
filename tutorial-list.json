@@ -3,8 +3,10 @@
   "posts": [
     { "slug": "vision-language-action-vla", "path": "tutorial-posts/model-vla.json" },
     { "slug": "world-action-model-wam", "path": "tutorial-posts/model-wam.json" },
-    { "slug": "world-action-model-rl", "path": "tutorial-posts/model-rl.json" },
-    { "slug": "action-data", "path": "tutorial-posts/data-action.json" },
+    { "slug": "reinforcement-learning-rl", "path": "tutorial-posts/model-rl.json" },
+    { "slug": "action-data-collection-device-adcd", "path": "tutorial-posts/data-adcd.json" },
+    { "slug": "action-data-generation-adg", "path": "tutorial-posts/data-adg.json" },
+    { "slug": "action-dataset-ads", "path": "tutorial-posts/data-ads.json" },
     { "slug": "action-competition", "path": "tutorial-posts/competition-action.json" }
   ]
 }
