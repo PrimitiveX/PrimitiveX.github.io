@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -22,29 +22,29 @@
         <a href="./research" data-route-link="research" data-i18n-nav="research">Research</a>
         <a href="./tutorial" data-route-link="tutorial" data-i18n-nav="tutorial">Tutorial</a>
         <a href="./join-us" data-route-link="join-us" data-i18n-nav="join-us">Join Us</a>
-        <button type="button" class="lang-toggle" data-lang-toggle>简体</button>
+        <button type="button" class="lang-toggle" data-lang-toggle>简体中文</button>
       </nav>
     </header>
 
     <main class="page-main">
       <section class="intro" id="home">
         <p data-i18n-intro></p>
+        <p data-i18n-intro-repo></p>
       </section>
 
       <section id="app-view" aria-live="polite"></section>
     </main>
 
     <div class="floating-controls" aria-label="Page controls">
-      <button class="back-to-prev" type="button" data-go-back aria-label="Go back">←</button>
-      <button class="back-to-top" type="button" data-scroll-top aria-label="Back to top">↑</button>
-      <button class="back-to-next" type="button" data-go-forward aria-label="Go forward">→</button>
+      <button class="back-to-prev" type="button" data-go-back aria-label="Go back">&larr;</button>
+      <button class="back-to-top" type="button" data-scroll-top aria-label="Back to top">&uarr;</button>
+      <button class="back-to-next" type="button" data-go-forward aria-label="Go forward">&rarr;</button>
     </div>
 
     <footer class="site-footer">
       <p data-i18n-footer>Primitive X</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
   </body>
 </html>
