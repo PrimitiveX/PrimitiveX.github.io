@@ -10,9 +10,14 @@
   "zhSummary": "",
   "roadmap": [
     {
-      "dateLabel": "--",
+      "dateLabel": "2026",
       "modelLabel": "VLA SOTA Leaderboard",
       "modelUrl": "https://sota.evomind-tech.com/"
+    },
+    {
+      "dateLabel": "2026",
+      "modelLabel": "BEHAVIOR Challenge",
+      "modelUrl": "https://behavior.stanford.edu/challenge/index.html"
     }
   ]
 }
