@@ -1,0 +1,58 @@
+{
+  "slug": "action-data-collection-device-adcd",
+  "track": "data",
+  "title": "Action Data Collection Device",
+  "zhTitle": "动作数据收集设备",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2024-02",
+      "modelLabel": "UMI(original)",
+      "modelUrl": "https://arxiv.org/pdf/2402.10329"
+    },
+    {
+      "dateLabel": "2024-09",
+      "modelLabel": "FastUMI",
+      "modelUrl": "https://arxiv.org/pdf/2409.19499"
+    },
+    {
+      "dateLabel": "2025-05",
+      "modelLabel": "DexUMI",
+      "modelUrl": "https://arxiv.org/pdf/2505.21864"
+    },
+    {
+      "dateLabel": "2026-01",
+      "modelLabel": "UMI-FT",
+      "modelUrl": "https://arxiv.org/pdf/2601.09988"
+    },
+    {
+      "dateLabel": "2026-06",
+      "modelLabel": "WT-UMI",
+      "modelUrl": "https://arxiv.org/pdf/2606.13232"
+    },
+    {
+      "dateLabel": "2026-04",
+      "modelLabel": "UMI-3D",
+      "modelUrl": "https://arxiv.org/pdf/2604.14089"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "UMI-Underwater",
+      "modelUrl": "https://arxiv.org/pdf/2603.27012"
+    },
+    {
+      "dateLabel": "2026-05",
+      "modelLabel": "Mobile-UMI",
+      "modelUrl": "https://arxiv.org/pdf/2605.20894"
+    },
+    {
+      "dateLabel": "2026-05",
+      "modelLabel": "BifrostUMI",
+      "modelUrl": "https://arxiv.org/pdf/2605.03452"
+    }
+  ]
+}

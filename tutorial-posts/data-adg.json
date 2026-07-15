@@ -1,0 +1,28 @@
+{
+  "slug": "action-data-generation-adg",
+  "track": "data",
+  "title": "Action Data Generation",
+  "zhTitle": "动作数据生成",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2025-08",
+      "modelLabel": "Masquerade",
+      "modelUrl": "https://arxiv.org/pdf/2508.09976"
+    },
+    {
+      "dateLabel": "2025-03",
+      "modelLabel": "Phantom",
+      "modelUrl": "https://arxiv.org/pdf/2503.00779"
+    },
+    {
+      "dateLabel": "2025-05",
+      "modelLabel": "H2R",
+      "modelUrl": "https://arxiv.org/pdf/2505.11920"
+    }
+  ]
+}
