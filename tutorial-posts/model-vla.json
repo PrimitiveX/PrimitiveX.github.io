@@ -133,6 +133,17 @@
       "dateLabel": "2026-07",
       "modelLabel": "Hy-Embodied-VLM-1.0",
       "modelUrl": "https://arxiv.org/pdf/2607.12894"
+    },
+    {
+      "dateLabel": "2026-02",
+      "modelLabel": "RynnBrain",
+      "modelUrl": "https://arxiv.org/pdf/2602.14979"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "Xiaomi-Robotics-U0",
+      "modelUrl": "https://arxiv.org/pdf/2607.11643"
     }
+    
   ]
 }
