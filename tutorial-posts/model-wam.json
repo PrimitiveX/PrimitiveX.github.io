@@ -53,6 +53,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "LingBot-VA 2.0",
       "modelUrl": "https://arxiv.org/pdf/2607.08639"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "Hy-Embodied-RxBrain-1.0",
+      "modelUrl": "https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0/blob/main/assets/RxBrain_v0.pdf"
     }
   ]
 }
