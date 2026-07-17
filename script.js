@@ -1,4 +1,4 @@
-﻿const appView = document.getElementById("app-view");
+const appView = document.getElementById("app-view");
 const routeLinks = document.querySelectorAll("[data-route-link]");
 const introSection = document.querySelector(".intro");
 
@@ -26,7 +26,7 @@ const collectionData = {
   tutorial: [],
 };
 
-let activeTutorialTrack = "all";
+let activeTutorialTrack = "model";
 let currentLang = localStorage.getItem("arm_lang") === "zh" ? "zh" : "en";
 let pendingRouteScrollOverride = null;
 let lastViewportScroll = { x: 0, y: 0 };
@@ -677,21 +677,17 @@ function renderTutorialListView() {
     return renderEmptyCollection(localizedCollectionTitle("tutorial"), "tutorial-posts");
   }
 
-  const tracks = ["all", "model", "data", "competition"];
+  const tracks = ["model", "data", "competition"];
   const labels = {
-    all: t("tutorialTracks.all") || (currentLang === "zh" ? "鍏ㄩ儴" : "All"),
     model: t("tutorialTracks.model"),
     data: t("tutorialTracks.data"),
     competition: t("tutorialTracks.competition"),
   };
 
-  const visibleItems =
-    activeTutorialTrack === "all"
-      ? allItems
-      : allItems.filter((item) => {
-          const track = normalizeSlug(item.track);
-          return track === activeTutorialTrack;
-        });
+  const visibleItems = allItems.filter((item) => {
+    const track = normalizeSlug(item.track);
+    return track === activeTutorialTrack;
+  });
 
   const itemsMarkup = visibleItems.length
     ? renderTutorialListItems(visibleItems)
