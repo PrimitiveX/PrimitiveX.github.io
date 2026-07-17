@@ -13,6 +13,31 @@
       "dateLabel": "2026-07",
       "modelLabel": "Harness VLA",
       "modelUrl": "https://arxiv.org/pdf/2607.08448"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "SELF-VLA",
+      "modelUrl": "https://arxiv.org/pdf/2603.11080"
+    },
+    {
+      "dateLabel": "2025-05",
+      "modelLabel": "Agentic Robot",
+      "modelUrl": "https://arxiv.org/pdf/2505.23450"
+    },
+    {
+      "dateLabel": "2026-02",
+      "modelLabel": "Sci-VLA",
+      "modelUrl": "https://arxiv.org/pdf/2602.09430"
+    },
+    {
+      "dateLabel": "2025-10",
+      "modelLabel": "VLA2",
+      "modelUrl": "https://arxiv.org/pdf/2510.14902"
+    },
+    {
+      "dateLabel": "2026-03",
+      "modelLabel": "VLA-AD",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2026W/DataMFM/papers/Belhadi_VLA-AD_Agentic_Vision-Language_Foundation_Models_for_Context-Aware_Anomaly_Detection_CVPRW_2026_paper.pdf"
     }
     
   ]
