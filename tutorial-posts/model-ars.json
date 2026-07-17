@@ -1,0 +1,19 @@
+{
+  "slug": "agentic-robot-system-ars",
+  "track": "model",
+  "title": "Agentic Robot System (ARS)",
+  "zhTitle": "智能机器人系统（ARS）",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "Harness VLA",
+      "modelUrl": "https://arxiv.org/pdf/2607.08448"
+    }
+    
+  ]
+}
