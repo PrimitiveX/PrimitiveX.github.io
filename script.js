@@ -929,28 +929,20 @@ function renderJoinUsView() {
 
   const joinText = t("joinUs");
   const companyText = String(joinText.company || "");
-  const projectLeaderEmail = joinText.projectLeaderEmail || "cuichaochen@ymbot.com";
   const researchHeadEmail = joinText.researchHeadEmail || "omtcyang@gmail.com";
-  const projectLeaderLabel = joinText.projectLeaderLabel || "Project Leader Mr. Cui";
   const researchHeadLabel = joinText.researchHeadLabel || "Research Head Dr. Chuang YANG";
-  const projectLeaderParts = splitContactLabel(
-    projectLeaderLabel, currentLang === "zh" ? "项目负责人" : "Project Leader", 
-    "Mr. Cui"
-  );
   const researchHeadParts = splitContactLabel(
     researchHeadLabel,
     currentLang === "zh" ? "研究负责人" : "Research Head",
     "Dr. Chuang YANG"
   );
   const researchHeadLink = `<span class="contact-role">${researchHeadParts.role}</span> <a class="contact-link" href="mailto:${researchHeadEmail}">${researchHeadParts.name}</a>`;
-  const projectLeaderLink = `<span class="contact-role">${projectLeaderParts.role}</span> <a class="contact-link" href="mailto:${projectLeaderEmail}">${projectLeaderParts.name}</a>`;
   const contactTemplate =
     joinText.contactTemplate ||
     (currentLang === "zh"
-      ? "如果你想加入我们团队或有任何其他问题，请联系（{researchHead} 或 {projectLeader}）。"
-      : "Contact me ({researchHead} or {projectLeader}) if you want to join our team or have any other questions.");
+      ? "如果你想加入我们团队或有任何其他问题，请联系（{researchHead}）。"
+      : "Contact me ({researchHead}) if you want to join our team or have any other questions.");
   const contactSentence = localizeText(contactTemplate, {
-    projectLeader: projectLeaderLink,
     researchHead: researchHeadLink,
   });
 
