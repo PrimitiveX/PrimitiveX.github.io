@@ -58,6 +58,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "Hy-Embodied-RxBrain-1.0",
       "modelUrl": "https://github.com/Tencent-Hunyuan/Hy-Embodied-RxBrain-1.0/blob/main/assets/RxBrain_v0.pdf"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "EgoWAM",
+      "modelUrl": "https://openreview.net/pdf?id=fRQ0wddXsf"
     }
   ]
 }
