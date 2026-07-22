@@ -1,0 +1,84 @@
+{
+  "slug": "knowledge-distillation-kd",
+  "track": "model",
+  "title": "Knowledge Distillation (KD)",
+  "zhTitle": "知识蒸馏（KD）",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2015-03",
+      "modelLabel": "Knowledge Distillation",
+      "modelUrl": "https://arxiv.org/pdf/1503.02531"
+    },
+    {
+      "dateLabel": "2016-12",
+      "modelLabel": "A2A",
+      "modelUrl": "https://arxiv.org/pdf/1612.03928"
+    },
+    {
+      "dateLabel": "2023-06",
+      "modelLabel": "OPD",
+      "modelUrl": "https://proceedings.iclr.cc/paper_files/paper/2024/file/5be69a584901a26c521c2b51e40a4c20-Paper-Conference.pdf"
+    },
+    {
+      "dateLabel": "2022-03",
+      "modelLabel": "Decoupled KD",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2022/papers/Zhao_Decoupled_Knowledge_Distillation_CVPR_2022_paper.pdf"
+    },
+    {
+      "dateLabel": "2023-11",
+      "modelLabel": "ADD",
+      "modelUrl": "https://arxiv.org/pdf/2311.17042"
+    },
+    {
+      "dateLabel": "2023-10",
+      "modelLabel": "ZEPHYR",
+      "modelUrl": "https://arxiv.org/pdf/2310.16944"
+    },
+    {
+      "dateLabel": "2022-07",
+      "modelLabel": "TinyViT",
+      "modelUrl": "https://arxiv.org/pdf/2207.10666"
+    },
+    {
+      "dateLabel": "2022-10",
+      "modelLabel": "OD-GDM",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2023/papers/Meng_On_Distillation_of_Guided_Diffusion_Models_CVPR_2023_paper.pdf"
+    },
+    {
+      "dateLabel": "2023-11",
+      "modelLabel": "DMD",
+      "modelUrl": "https://openaccess.thecvf.com/content/CVPR2024/papers/Yin_One-step_Diffusion_with_Distribution_Matching_Distillation_CVPR_2024_paper.pdf"
+    },
+    {
+      "dateLabel": "2023-06",
+      "modelLabel": "MiniLLM",
+      "modelUrl": "https://proceedings.iclr.cc/paper_files/paper/2024/file/8ac015d409635f196f9e3e9dcfb9a94e-Paper-Conference.pdf"
+    },
+    {
+      "dateLabel": "2015-11",
+      "modelLabel": "PD",
+      "modelUrl": "https://arxiv.org/pdf/1511.06295"
+    },
+    {
+      "dateLabel": "2019-02",
+      "modelLabel": "DPD",
+      "modelUrl": "http://proceedings.mlr.press/v89/czarnecki19a/czarnecki19a.pdf"
+    },
+    {
+      "dateLabel": "2017-07",
+      "modelLabel": "Distral",
+      "modelUrl": "https://proceedings.neurips.cc/paper_files/paper/2017/file/0abdc563a06105aee3c6136871c9f4d1-Paper.pdf"
+    },
+    {
+      "dateLabel": "2026-06",
+      "modelLabel": "MOPD",
+      "modelUrl": "https://arxiv.org/pdf/2606.30406"
+    }
+   
+  ]
+}
