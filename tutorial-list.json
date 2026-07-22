@@ -4,6 +4,7 @@
     { "slug": "vision-language-action-vla", "path": "tutorial-posts/model-vla.json" },
     { "slug": "world-action-model-wam", "path": "tutorial-posts/model-wam.json" },
     { "slug": "reinforcement-learning-rl", "path": "tutorial-posts/model-rl.json" },
+    { "slug": "knowledge-distillation-kd", "path": "tutorial-posts/model-kd.json" },
     { "slug": "agentic-robot-system-ars", "path": "tutorial-posts/model-ars.json" },
     { "slug": "action-data-collection-device-adcd", "path": "tutorial-posts/data-adcd.json" },
     { "slug": "action-data-generation-adg", "path": "tutorial-posts/data-adg.json" },
