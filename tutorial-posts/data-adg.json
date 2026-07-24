@@ -23,6 +23,31 @@
       "dateLabel": "2025-05",
       "modelLabel": "H2R",
       "modelUrl": "https://arxiv.org/pdf/2505.11920"
+    },
+    {
+      "dateLabel": "2024-10",
+      "modelLabel": "EgoMimic",
+      "modelUrl": "https://arxiv.org/pdf/2410.24221?"
+    },
+    {
+      "dateLabel": "2023-02",
+      "modelLabel": "MimicPlay",
+      "modelUrl": "https://arxiv.org/pdf/2302.12422"
+    },
+    {
+      "dateLabel": "2024-03",
+      "modelLabel": "Vid2Robot",
+      "modelUrl": "https://arxiv.org/pdf/2403.12943"
+    },
+    {
+      "dateLabel": "2024-05",
+      "modelLabel": "Track2Act",
+      "modelUrl": "https://arxiv.org/pdf/2405.01527"
+    },
+    {
+      "dateLabel": "2021-08",
+      "modelLabel": "DexMV",
+      "modelUrl": "https://arxiv.org/pdf/2108.05877"
     }
   ]
 }
