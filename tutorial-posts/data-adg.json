@@ -58,6 +58,11 @@
       "dateLabel": "2025-02",
       "modelLabel": "Human2Robot",
       "modelUrl": "file:///C:/Users/cyang/Desktop/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/00654-AAAI26.XieS-CV.pdf"
+    },
+    {
+      "dateLabel": "2026-06",
+      "modelLabel": "EgoInfinity",
+      "modelUrl": "https://arxiv.org/pdf/2606.17385"
     }
   ]
 }
