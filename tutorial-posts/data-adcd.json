@@ -53,6 +53,11 @@
       "dateLabel": "2026-05",
       "modelLabel": "BifrostUMI",
       "modelUrl": "https://arxiv.org/pdf/2605.03452"
+    },
+    {
+      "dateLabel": "2025-07",
+      "modelLabel": "RwoR",
+      "modelUrl": "https://arxiv.org/pdf/2507.03930"
     }
   ]
 }
