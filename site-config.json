@@ -1,0 +1,114 @@
+{
+  "dataVersion": "20260510",
+  "assets": {
+    "homeVideoUrl": "home-posts/video/home.mp4"
+  },
+  "collections": {
+    "research": {
+      "list": "research-list.json",
+      "title": "Research"
+    },
+    "tutorial": {
+      "list": "tutorial-list.json",
+      "title": "Tutorial"
+    }
+  },
+  "uiText": {
+    "en": {
+      "nav": {
+        "home": "Home",
+        "scenario": "Scenario",
+        "research": "Research",
+        "tutorial": "Tutorial",
+        "join-us": "Join Us"
+      },
+      "logoHtml": "Primitive X",
+      "intro": "Primitive X is guided by the Chinese educational philosophy of “rote memorization → deep understanding → generalization by analogy.” We build productive entry-level robotic workers that generate real-world economic value through memorization-based learning; they evolve into single-domain experts through self-learning in practice, and ultimately generalize their capabilities by analogy—acting as correctors for future general-purpose agents and serving as intelligence primitives that seamlessly augment other agents and human workflows.",
+      "introRepoHtml": "Welcome to visit our <a class=\"contact-link\" href=\"https://github.com/PrimitiveX?tab=repositories\" target=\"_blank\" rel=\"noopener noreferrer\">CODE HOMEPAGE</a>.",
+      "footer": "Primitive X",
+      "langToggle": "简体中文",
+      "tabTitles": {
+        "home": "Home",
+        "scenario": "Scenario",
+        "research": "Research",
+        "tutorial": "Tutorial",
+        "join-us": "Join Us"
+      },
+      "labels": {
+        "date": "Date:",
+        "email": "Email:",
+        "paper": "Paper:",
+        "resource": "Resource:"
+      },
+      "tutorialTracks": {
+        "all": "All",
+        "model": "Model",
+        "data": "Data",
+        "competition": "Competition"
+      },
+      "emptyHint": "No {title} entries found",
+      "emptyHelp": "Add JSON files under {path} and reload.",
+      "joinUs": {
+        "title": "Join ARM",
+        "company": "We focus on developing robotic intelligence systems.",
+        "websiteLabel": "official website",
+        "websiteUrl": "http://www.ymbot.com/home",
+        "hiring": "",
+        "contactTemplate": "Contact me ({researchHead}) if you want to join our team or have any other questions.",
+        "researchHeadLabel": "Research Head Dr. Chuang YANG",
+        "researchHeadEmail": "omtcyang@gmail.com",
+        "qualificationsLabel": "Qualifications",
+        "dutiesLabel": "Duties",
+        "onlineApply": "Apply Online"
+      }
+    },
+    "zh": {
+      "nav": {
+        "home": "主页",
+        "scenario": "场景",
+        "research": "研究",
+        "tutorial": "教程",
+        "join-us": "加入我们"
+      },
+      "logoHtml": "Primitive X",
+      "intro": "Primitive X 受中国教育哲学 “机械记忆 → 深入理解 → 举一反三” 的启发。我们首先打造一批入门级机器人工作者，通过基于记忆的学习方式进入真实生产环境，在工厂中创造实际经济价值；接着在持续的实践过程中不断积累环境交互数据，从重复执行中归纳任务的深层结构与规律，由机械复现逐步走向对任务本质的理解，进化为单一领域专家；最终，通过对单一领域本质的掌握激发举一反三的能力——即使面对未见过的场景仍能自主有效应对：既可作为未来通用智能体系统的纠错器，也可作为智能基础单元无缝嵌入其他智能体与人类工作流，实现能力增强与协同扩展。",
+      "introRepoHtml": "欢迎访问我们的<a class=\"contact-link\" href=\"https://github.com/PrimitiveX?tab=repositories\" target=\"_blank\" rel=\"noopener noreferrer\">代码主页</a>。",
+      "footer": "Primitive X",
+      "langToggle": "English",
+      "tabTitles": {
+        "home": "主页",
+        "scenario": "场景",
+        "research": "研究",
+        "tutorial": "教程",
+        "join-us": "加入我们"
+      },
+      "labels": {
+        "date": "日期:",
+        "email": "邮箱:",
+        "paper": "论文:",
+        "resource": "资源:"
+      },
+      "tutorialTracks": {
+        "all": "全部",
+        "model": "模型",
+        "data": "数据",
+        "competition": "竞赛"
+      },
+      "emptyHint": "未找到 {title} 条目",
+      "emptyHelp": "请在 {path} 下添加 JSON 文件后刷新。",
+      "joinUs": {
+        "title": "加入 ARM",
+        "company": "我们专注于机器人智能系统研发。",
+        "websiteLabel": "官网",
+        "websiteUrl": "http://www.ymbot.com/home",
+        "hiring": "",
+        "contactTemplate": "如果你想加入我们团队或有任何其他问题，请联系（{researchHead}）。",
+        "researchHeadLabel": "研究负责人 Dr. Chuang YANG",
+        "researchHeadEmail": "omtcyang@gmail.com",
+        "qualificationsLabel": "任职要求",
+        "dutiesLabel": "岗位职责",
+        "onlineApply": "在线申请"
+      }
+    }
+  }
+}

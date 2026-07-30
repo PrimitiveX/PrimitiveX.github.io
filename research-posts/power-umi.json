@@ -1,0 +1,46 @@
+{
+    "slug": "Power-UMI",
+    "highlighted": true,
+    "title": "Power-UMI: Multi-Scenario Tactile Robot Data Collector",
+    "zhTitle": "Power-UMI：多场景触觉机器人数据采集器",
+    "isoDate": "2026-06-06",
+    "dateLabel": "Jun 6, 2026",
+    "zhDateLabel": "2026年6月6日",
+    "paperLabel": "Power-UMI: Multi-Scenario Tactile Robot Data Collector",
+    "zhPaperLabel": "Power-UMI：多场景触觉机器人数据采集器",
+    "paperUrl": "https://omtcyang.github.io/pdf/2026%20Power-UMI.pdf",
+    "emailLabel": "omtcyang@gmail.com",
+    "emailUrl": "mailto:omtcyang@gmail.com",
+    "summary": "This paper designs an untethered, hardware-software co-designed data acquisition system, named Power-UMI.",
+    "zhSummary": "本文设计了一种名为Power-UMI的软硬件协同设计的便携数据采集系统。",
+    "content": [
+        {
+            "type": "figure",
+            "url": "research-posts/power-umi/overall.png",
+            "caption": "Conceptual illustration of the proposed Power-UMI. POWER summarizes the key design principles of the system, including Portable deployment, Omni-scenario applicability, Wireless operation, Efficient edge computation, and online data Review.",
+            "layout": "single"
+        },
+        {
+            "type": "body",
+            "text": "Embodied Artificial Intelligence and imitation learning heavily depend on high-scale, high-quality human demonstration data. While the Universal Manipulation Interface (UMI) paradigm has enhanced data collection efficiency, existing solutions still face practical constraints from specialized hardware, offline reconstruction, calibration requirements, and limited deployment flexibility. These factors can restrict scalable data collection across diverse scenarios and reduce the fidelity of natural human demonstrations. To address this bottleneck, we propose an untethered, hardware-software co-designed data acquisition framework named Power-UMI, which delivers a Portable data ecosystem. It integrates an edge-computing trinocular vision module, a multi-dimensional tactile end-effector, and an onboard power and communication system to achieve a fully Omni-scenario, Wireless, and highly Efficient data workflow. Furthermore, an onboard Review interface allows immediate data verification and filtering. Experimental deployments demonstrate that our cable-free design significantly enhances the flexibility of data collection across diverse scenarios while preserving the high fidelity of natural human demonstrations for embodied learning tasks.",
+            "zhText": "具身人工智能和模仿学习高度依赖于大规模、高质量的人类示教数据。尽管通用操作接口（UMI）范式在一定程度上提升了数据采集效率，但现有解决方案仍面临专用硬件、离线重建、标定要求以及部署灵活性受限等实际制约。这些因素会限制跨多样化场景的可扩展数据采集，并降低自然人机示教的保真度。为突破这一瓶颈，我们提出了一种名为Power-UMI的、软硬件协同设计的无线数据采集框架，旨在构建一个便携式数据生态系统。该系统集成了边缘计算三目视觉模块、多维触觉末端执行器以及板载供电与通信系统，实现了全场景、无线化、高效率的数据工作流。此外，板载的回放界面支持即时数据验证与筛选。实验部署结果表明，我们无线化的设计在显著提升多样化场景下数据采集灵活性的同时，能够为具身学习任务保留自然人机示教的高保真度。"
+        },
+        {
+            "type": "figure",
+            "url": "research-posts/power-umi/system.png",
+            "caption": "Physical prototype of the proposed Power-UMI system. The integrated hardware platform comprises onboard sensing, computation, power supply, and end-effector modules, enabling fully untethered operation for embodied data collection.",
+            "layout": "double"
+        },
+        {
+            "type": "figure",
+            "url": "research-posts/power-umi/systemparameter.png",
+            "caption": "Hardware Specifications of the Power-UMI Data Collector.",
+            "layout": "double"
+        },
+        {
+            "type": "body",
+            "text": "The hardware architecture consists of three coupled modules: a visual-inertial perception unit, a tactile-enabled end-effector, and an untethered power and storage unit. Together, these modules are designed to acquire high-fidelity demonstrations while preserving the operator’s natural hand motion.",
+            "zhText": "硬件架构由三个耦合模块组成：一个视觉惯性感知单元、一个具备触觉能力的末端执行器，以及一个无缆供电与存储单元。这些模块协同设计，旨在采集高保真示教数据，同时保留操作者自然的手部运动。"
+        }
+    ]
+}

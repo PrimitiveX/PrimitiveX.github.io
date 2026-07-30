@@ -1,0 +1,5 @@
+tmp-test.pdf
+tmp-fn-body.json
+.env
+*.log
+.venv/

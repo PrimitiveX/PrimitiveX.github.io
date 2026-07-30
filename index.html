@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <meta
+      name="description"
+      content="Primitive X (ARM) develops general-purpose AI for robot motion and embodied intelligence."
+    />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='2' y='10' width='60' height='44' rx='22' ry='22' fill='none' stroke='%23000' stroke-width='3'/%3E%3Ctext x='32' y='32' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-size='24' font-weight='700'%3EPX%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a href="./" class="logo" data-route-link="home">
+        <span class="logo-mark" aria-hidden="true">PX</span>
+        <span class="logo-text" data-i18n-logo>Primitive X</span>
+      </a>
+      <nav class="site-nav">
+        <a href="./" data-route-link="home" data-i18n-nav="home">Home</a>
+        <a href="./research" data-route-link="research" data-i18n-nav="research">Research</a>
+        <a href="./tutorial" data-route-link="tutorial" data-i18n-nav="tutorial">Tutorial</a>
+        <a href="./join-us" data-route-link="join-us" data-i18n-nav="join-us">Join Us</a>
+        <button type="button" class="lang-toggle" data-lang-toggle>简体中文</button>
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <section class="intro" id="home">
+        <p data-i18n-intro></p>
+        <p data-i18n-intro-repo></p>
+      </section>
+
+      <section id="app-view" aria-live="polite"></section>
+    </main>
+
+    <div class="floating-controls" aria-label="Page controls">
+      <button class="back-to-prev" type="button" data-go-back aria-label="Go back">&larr;</button>
+      <button class="back-to-top" type="button" data-scroll-top aria-label="Back to top">&uarr;</button>
+      <button class="back-to-next" type="button" data-go-forward aria-label="Go forward">&rarr;</button>
+    </div>
+
+    <footer class="site-footer">
+      <p data-i18n-footer>Primitive X</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

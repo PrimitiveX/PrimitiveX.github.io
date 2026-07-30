@@ -1,0 +1,53 @@
+{
+  "slug": "vision-language-action-rl",
+  "track": "model",
+  "title": "Reinformence Learning (RL)",
+  "zhTitle": "强化学习（RL）",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2025-09",
+      "modelLabel": "RLinf",
+      "modelUrl": "https://arxiv.org/pdf/2509.15965"
+    },
+    {
+      "dateLabel": "2022-03",
+      "modelLabel": "RLHF",
+      "modelUrl": "https://proceedings.neurips.cc/paper_files/paper/2022/file/b1efde53be364a73914f58805a001731-Paper-Conference.pdf"
+    },
+    {
+      "dateLabel": "2017-06",
+      "modelLabel": "RLHP",
+      "modelUrl": "https://proceedings.neurips.cc/paper_files/paper/2017/file/d5e2c0adad503c91f91df240d0cd4e49-Paper.pdf"
+    },
+    {
+      "dateLabel": "2024-02",
+      "modelLabel": "GRPO",
+      "modelUrl": "https://arxiv.org/pdf/2402.03300"
+    },
+    {
+      "dateLabel": "2017-07",
+      "modelLabel": "PPO",
+      "modelUrl": "https://arxiv.org/pdf/1707.06347"
+    },
+    {
+      "dateLabel": "2018-06",
+      "modelLabel": "QT-Opt",
+      "modelUrl": "http://proceedings.mlr.press/v87/kalashnikov18a/kalashnikov18a.pdf"
+    },
+    {
+      "dateLabel": "2025-09",
+      "modelLabel": "SimpleVLA-RL",
+      "modelUrl": "https://arxiv.org/pdf/2509.09674"
+    },
+    {
+      "dateLabel": "2025-04",
+      "modelLabel": "Scaling-RL",
+      "modelUrl": "https://aclanthology.org/2025.emnlp-main.22.pdf"
+    }
+  ]
+}
