@@ -1,0 +1,23 @@
+{
+  "slug": "action-competition",
+  "track": "competition",
+  "title": "Action Competition",
+  "zhTitle": "动作竞赛",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2026",
+      "modelLabel": "VLA SOTA Leaderboard",
+      "modelUrl": "https://sota.evomind-tech.com/"
+    },
+    {
+      "dateLabel": "2026",
+      "modelLabel": "BEHAVIOR Challenge",
+      "modelUrl": "https://behavior.stanford.edu/challenge/index.html"
+    }
+  ]
+}

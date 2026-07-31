@@ -1,0 +1,7 @@
+{
+  "collection": "research",
+  "posts": [
+    { "slug": "signeye", "path": "research-posts/signeye.json" },
+    { "slug": "power-umi", "path": "research-posts/power-umi.json" }
+  ]
+}

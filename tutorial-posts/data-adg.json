@@ -1,0 +1,68 @@
+{
+  "slug": "action-data-generation-adg",
+  "track": "data",
+  "title": "Action Data Generation",
+  "zhTitle": "动作数据生成",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2025-08",
+      "modelLabel": "Masquerade",
+      "modelUrl": "https://arxiv.org/pdf/2508.09976"
+    },
+    {
+      "dateLabel": "2025-03",
+      "modelLabel": "Phantom",
+      "modelUrl": "https://arxiv.org/pdf/2503.00779"
+    },
+    {
+      "dateLabel": "2025-05",
+      "modelLabel": "H2R",
+      "modelUrl": "https://arxiv.org/pdf/2505.11920"
+    },
+    {
+      "dateLabel": "2024-10",
+      "modelLabel": "EgoMimic",
+      "modelUrl": "https://arxiv.org/pdf/2410.24221?"
+    },
+    {
+      "dateLabel": "2023-02",
+      "modelLabel": "MimicPlay",
+      "modelUrl": "https://arxiv.org/pdf/2302.12422"
+    },
+    {
+      "dateLabel": "2024-03",
+      "modelLabel": "Vid2Robot",
+      "modelUrl": "https://arxiv.org/pdf/2403.12943"
+    },
+    {
+      "dateLabel": "2024-05",
+      "modelLabel": "Track2Act",
+      "modelUrl": "https://arxiv.org/pdf/2405.01527"
+    },
+    {
+      "dateLabel": "2021-08",
+      "modelLabel": "DexMV",
+      "modelUrl": "https://arxiv.org/pdf/2108.05877"
+    },
+    {
+      "dateLabel": "2025-07",
+      "modelLabel": "EgoVLA",
+      "modelUrl": "https://arxiv.org/pdf/2507.12440"
+    },
+    {
+      "dateLabel": "2025-02",
+      "modelLabel": "Human2Robot",
+      "modelUrl": "file:///C:/Users/cyang/Desktop/%E7%BD%91%E9%A1%B5%E4%B8%8B%E8%BD%BD/00654-AAAI26.XieS-CV.pdf"
+    },
+    {
+      "dateLabel": "2026-06",
+      "modelLabel": "EgoInfinity",
+      "modelUrl": "https://arxiv.org/pdf/2606.17385"
+    }
+  ]
+}
