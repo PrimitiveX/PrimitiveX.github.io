@@ -58,6 +58,11 @@
       "dateLabel": "2025-07",
       "modelLabel": "RwoR",
       "modelUrl": "https://arxiv.org/pdf/2507.03930"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "Power-UMI",
+      "modelUrl": "https://omtcyang.github.io/pdf/2026%20Power-UMI.pdf"
     }
   ]
 }
