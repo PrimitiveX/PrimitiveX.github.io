@@ -148,6 +148,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "ResTacVLA",
       "modelUrl": "https://arxiv.org/pdf/2607.03387"
+    },
+    {
+      "dateLabel": "2026-06",
+      "modelLabel": "LA4VLA",
+      "modelUrl": "https://arxiv.org/pdf/2606.27295"
     }
     
   ]
