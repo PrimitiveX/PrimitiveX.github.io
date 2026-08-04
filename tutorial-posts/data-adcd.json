@@ -68,6 +68,11 @@
       "dateLabel": "2026-04",
       "modelLabel": "EgoVerse",
       "modelUrl": "https://arxiv.org/pdf/2604.07607"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "HiFi-UMI",
+      "modelUrl": "https://arxiv.org/pdf/2607.25895"
     }
   ]
 }
