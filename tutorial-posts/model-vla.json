@@ -158,6 +158,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "TurboVLA",
       "modelUrl": "https://arxiv.org/pdf/2607.27205"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "Tau0",
+      "modelUrl": "https://tau0-vla.github.io/tau0-vla.pdf"
     }
     
   ]
