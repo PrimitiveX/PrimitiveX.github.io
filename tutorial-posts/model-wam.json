@@ -73,6 +73,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "INTACT",
       "modelUrl": "https://arxiv.org/pdf/2607.26056"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "FlowWAM",
+      "modelUrl": "https://arxiv.org/pdf/2607.13017"
     }
   ]
 }
