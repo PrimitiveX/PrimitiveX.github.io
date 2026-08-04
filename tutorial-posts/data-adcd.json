@@ -63,6 +63,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "Power-UMI",
       "modelUrl": "https://omtcyang.github.io/pdf/2026%20Power-UMI.pdf"
+    },
+    {
+      "dateLabel": "2026-04",
+      "modelLabel": "EgoVerse",
+      "modelUrl": "https://arxiv.org/pdf/2604.07607"
     }
   ]
 }
