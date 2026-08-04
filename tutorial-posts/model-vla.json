@@ -168,6 +168,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "VLA-Corrector",
       "modelUrl": "https://arxiv.org/pdf/2607.01804"
+    },
+    {
+      "dateLabel": "2026-06",
+      "modelLabel": "KEMO",
+      "modelUrl": "https://arxiv.org/pdf/2606.23589"
     }
     
   ]
