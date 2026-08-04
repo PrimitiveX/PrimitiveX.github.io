@@ -153,6 +153,11 @@
       "dateLabel": "2026-06",
       "modelLabel": "LA4VLA",
       "modelUrl": "https://arxiv.org/pdf/2606.27295"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "TurboVLA",
+      "modelUrl": "https://arxiv.org/pdf/2607.27205"
     }
     
   ]
