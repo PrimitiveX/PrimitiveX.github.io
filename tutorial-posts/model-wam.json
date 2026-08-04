@@ -63,6 +63,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "EgoWAM",
       "modelUrl": "https://openreview.net/pdf?id=fRQ0wddXsf"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "World Action Planner",
+      "modelUrl": "https://arxiv.org/pdf/2607.27599"
     }
   ]
 }
