@@ -2,7 +2,7 @@
   "collection": "tutorial",
   "posts": [
     { "slug": "vision-language-action-vla", "path": "tutorial-posts/model-vla.json" },
-    { "slug": "vision-language-action-inference-accelerate-vlaia", "path": "tutorial-posts/model-vlaia.json" },
+    { "slug": "vision-language-action-communication-accelerate-vlaca", "path": "tutorial-posts/model-vlaca.json" },
     { "slug": "world-action-model-wam", "path": "tutorial-posts/model-wam.json" },
     { "slug": "reinforcement-learning-rl", "path": "tutorial-posts/model-rl.json" },
     { "slug": "knowledge-distillation-kd", "path": "tutorial-posts/model-kd.json" },
