@@ -1,0 +1,19 @@
+{
+  "slug": "vision-language-action-inference-accelerate-vlaia",
+  "track": "model",
+  "title": "Vision Language Action Inference Accelerate (VLAIA)",
+  "zhTitle": "视觉-语言-动作推理加速（VLAIA）",
+  "isoDate": "2026-07-12",
+  "dateLabel": "Jul 12, 2026",
+  "zhDateLabel": "2026年7月12日",
+  "summary": "",
+  "zhSummary": "",
+  "roadmap": [
+    {
+      "dateLabel": "2026-01",
+      "modelLabel": "VLAgents (Shared Memory or TCP)",
+      "modelUrl": "https://arxiv.org/pdf/2601.11250"
+    }
+    
+  ]
+}
