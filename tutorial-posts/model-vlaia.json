@@ -13,6 +13,11 @@
       "dateLabel": "2026-01",
       "modelLabel": "VLAgents (Shared Memory or TCP)",
       "modelUrl": "https://arxiv.org/pdf/2601.11250"
+    },
+    {
+      "dateLabel": "2020-02",
+      "modelLabel": "gRPS vs. ZeroMQ",
+      "modelUrl": "https://d1wqtxts1xzle7.cloudfront.net/118825464/Comparative_Analysis_OF_GRPC_VS._ZeroMQ_for_vis3-libre.pdf?1728665507=&response-content-disposition=inline%3B+filename%3DComparative_Analysis_OF_GRPC_VS_ZeroMQ_f.pdf&Expires=1785816617&Signature=H-xc01jdEJvWt2HMqigODwe9c8-ShAIfOTWgLqAa6h1Npj4UVk3xyfr3vVp9QcxD3ZXVma32RjB33TqBqpH0lnCyI1w1Dz7tuM0BxJgaAtmflDSQ1-ANCxJwZc~NiCSsLFXCJKOjQSzB4BAR7UhvN7KUGgUSRDD-zg-rB1Ir8FDw1VieycI7EmQWEvaXmhXLS3-UguIETUFa4hZkQyT4sGBbU1EAysktS9PyBcUE0QTnqdxVkRNqnGaH3AWQ8trONEBffMMc10r-fF49VoUds9ewtGb4V16lYxMVcWzDjKu0ioAn~syNAhom50PNgYQsz05da02NO1egtdgq1KSHmA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA"
     }
     
   ]
