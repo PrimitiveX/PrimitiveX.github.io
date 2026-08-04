@@ -143,6 +143,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "Xiaomi-Robotics-U0",
       "modelUrl": "https://arxiv.org/pdf/2607.11643"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "ResTacVLA",
+      "modelUrl": "https://arxiv.org/pdf/2607.03387"
     }
     
   ]
