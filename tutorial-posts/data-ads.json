@@ -53,6 +53,11 @@
       "dateLabel": "2025-03",
       "modelLabel": "GraspVLA",
       "modelUrl": "https://arxiv.org/pdf/2505.03233"
+    },
+    {
+      "dateLabel": "2026-07",
+      "modelLabel": "Data Pyramid",
+      "modelUrl": "https://arxiv.org/pdf/2607.24744"
     }
   ]
 }
