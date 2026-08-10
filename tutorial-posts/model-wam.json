@@ -78,6 +78,11 @@
       "dateLabel": "2026-07",
       "modelLabel": "FlowWAM",
       "modelUrl": "https://arxiv.org/pdf/2607.13017"
+    },
+    {
+      "dateLabel": "2026-08",
+      "modelLabel": "Lila-WAM",
+      "modelUrl": "https://arxiv.org/pdf/2608.03701"
     }
   ]
 }
