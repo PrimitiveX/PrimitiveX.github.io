@@ -22,10 +22,10 @@
         "tutorial": "Tutorial",
         "join-us": "Join Us"
       },
-      "logoHtml": "Primitive X",
+      "logoHtml": "Primitive X @ YMBot",
       "intro": "Primitive X is guided by the Chinese educational philosophy of “rote memorization → deep understanding → generalization by analogy.” We build productive entry-level robotic workers that generate real-world economic value through memorization-based learning; they evolve into single-domain experts through self-learning in practice, and ultimately generalize their capabilities by analogy—acting as correctors for future general-purpose agents and serving as intelligence primitives that seamlessly augment other agents and human workflows.",
       "introRepoHtml": "Welcome to visit our <a class=\"contact-link\" href=\"https://github.com/PrimitiveX?tab=repositories\" target=\"_blank\" rel=\"noopener noreferrer\">CODE HOMEPAGE</a>.",
-      "footer": "Primitive X",
+      "footer": "Primitive X @ YMBot",
       "langToggle": "简体中文",
       "tabTitles": {
         "home": "Home",
