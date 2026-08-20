@@ -10,6 +10,11 @@
   "zhSummary": "",
   "roadmap": [
     {
+      "dateLabel": "2026-07",
+      "modelLabel": "Patch Policy",
+      "modelUrl": "https://arxiv.org/pdf/2607.18236"
+    },
+    {
       "dateLabel": "2026-02",
       "modelLabel": "ABot-M0",
       "modelUrl": "https://arxiv.org/pdf/2602.11236"
