@@ -10,6 +10,11 @@
   "zhSummary": "",
   "roadmap": [
     {
+      "dateLabel": "2026-08",
+      "modelLabel": "Dyna-2",
+      "modelUrl": "https://www.dyna.co/dyna-2"
+    },
+    {
       "dateLabel": "2026-07",
       "modelLabel": "Masked Visual Actions",
       "modelUrl": "https://arxiv.org/pdf/2607.19343"
