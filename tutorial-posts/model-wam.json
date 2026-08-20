@@ -10,6 +10,11 @@
   "zhSummary": "",
   "roadmap": [
     {
+      "dateLabel": "2026-08",
+      "modelLabel": "TempoWAM",
+      "modelUrl": "https://arxiv.org/pdf/2608.09492"
+    },
+    {
       "dateLabel": "2025-12",
       "modelLabel": "Motus",
       "modelUrl": "https://openaccess.thecvf.com/content/CVPR2026/papers/Bi_Motus_A_Unified_Latent_Action_World_Model_CVPR_2026_paper.pdf"
