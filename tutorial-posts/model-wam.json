@@ -10,6 +10,11 @@
   "zhSummary": "",
   "roadmap": [
     {
+      "dateLabel": "2026-07",
+      "modelLabel": "Masked Visual Actions",
+      "modelUrl": "https://arxiv.org/pdf/2607.19343"
+    },
+    {
       "dateLabel": "2026-08",
       "modelLabel": "TempoWAM",
       "modelUrl": "https://arxiv.org/pdf/2608.09492"
