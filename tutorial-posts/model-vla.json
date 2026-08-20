@@ -11,6 +11,11 @@
   "roadmap": [
     {
       "dateLabel": "2026-08",
+      "modelLabel": "Actuation-Slack Refresh",
+      "modelUrl": "https://arxiv.org/pdf/2608.00391"
+    },
+    {
+      "dateLabel": "2026-08",
       "modelLabel": "ChainVLA",
       "modelUrl": "https://arxiv.org/pdf/2608.02326"
     },
