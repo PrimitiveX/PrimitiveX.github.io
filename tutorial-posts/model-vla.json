@@ -10,6 +10,11 @@
   "zhSummary": "",
   "roadmap": [
     {
+      "dateLabel": "2026-08",
+      "modelLabel": "ChainVLA",
+      "modelUrl": "https://arxiv.org/pdf/2608.02326"
+    },
+    {
       "dateLabel": "2026-07",
       "modelLabel": "ActionCache",
       "modelUrl": "https://arxiv.org/pdf/2607.06370"
