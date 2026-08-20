@@ -11,6 +11,11 @@
   "roadmap": [
     {
       "dateLabel": "2026-07",
+      "modelLabel": "Route-VLA",
+      "modelUrl": "https://arxiv.org/pdf/2607.26807"
+    },
+    {
+      "dateLabel": "2026-07",
       "modelLabel": "Patch Policy",
       "modelUrl": "https://arxiv.org/pdf/2607.18236"
     },
