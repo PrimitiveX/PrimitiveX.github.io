@@ -173,6 +173,11 @@
       "dateLabel": "2026-06",
       "modelLabel": "KEMO",
       "modelUrl": "https://arxiv.org/pdf/2606.23589"
+    },
+    {
+      "dateLabel": "2025-10",
+      "modelLabel": "RLinf-VLA",
+      "modelUrl": "https://arxiv.org/pdf/2510.06710"
     }
     
   ]
